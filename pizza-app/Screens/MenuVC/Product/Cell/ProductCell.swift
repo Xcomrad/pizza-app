@@ -54,7 +54,7 @@ class ProductCell: UITableViewCell {
         button.backgroundColor = .systemOrange.withAlphaComponent(0.5)
         button.layer.cornerRadius = 15
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
-        button.titleLabel?.textColor = .systemBrown
+        button.setTitleColor(.systemBrown, for: .normal)
         button.heightAnchor.constraint(equalToConstant: 40).isActive = true
         button.widthAnchor.constraint(equalToConstant: 60).isActive = true
         return button
