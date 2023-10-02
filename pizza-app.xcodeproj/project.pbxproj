@@ -7,19 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		266D51512ACAD1B400CAF1AD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 266D51502ACAD1B400CAF1AD /* SnapKit */; };
+		266D51532ACAD1B400CAF1AD /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 266D51522ACAD1B400CAF1AD /* SnapKit-Dynamic */; };
+		266D51552ACAD24200CAF1AD /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266D51542ACAD24200CAF1AD /* ProductCell.swift */; };
+		266D51592ACAD8C100CAF1AD /* PizzaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266D51582ACAD8C100CAF1AD /* PizzaService.swift */; };
 		26998F482ACAC9CC00946CA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26998F472ACAC9CC00946CA5 /* AppDelegate.swift */; };
 		26998F4A2ACAC9CC00946CA5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26998F492ACAC9CC00946CA5 /* SceneDelegate.swift */; };
-		26998F4C2ACAC9CC00946CA5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26998F4B2ACAC9CC00946CA5 /* ViewController.swift */; };
+		26998F4C2ACAC9CC00946CA5 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26998F4B2ACAC9CC00946CA5 /* TableView.swift */; };
 		26998F4F2ACAC9CC00946CA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26998F4D2ACAC9CC00946CA5 /* Main.storyboard */; };
 		26998F512ACAC9CE00946CA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26998F502ACAC9CE00946CA5 /* Assets.xcassets */; };
 		26998F542ACAC9CE00946CA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26998F522ACAC9CE00946CA5 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		266D51542ACAD24200CAF1AD /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		266D51582ACAD8C100CAF1AD /* PizzaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaService.swift; sourceTree = "<group>"; };
 		26998F442ACAC9CC00946CA5 /* pizza-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pizza-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26998F472ACAC9CC00946CA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26998F492ACAC9CC00946CA5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		26998F4B2ACAC9CC00946CA5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		26998F4B2ACAC9CC00946CA5 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		26998F4E2ACAC9CC00946CA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		26998F502ACAC9CE00946CA5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		26998F532ACAC9CE00946CA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -31,12 +37,96 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				266D51512ACAD1B400CAF1AD /* SnapKit in Frameworks */,
+				266D51532ACAD1B400CAF1AD /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		266D51462ACACF8C00CAF1AD /* MenuVC */ = {
+			isa = PBXGroup;
+			children = (
+				266D51562ACAD7BA00CAF1AD /* TableView */,
+			);
+			path = MenuVC;
+			sourceTree = "<group>";
+		};
+		266D51472ACACF9A00CAF1AD /* ContactsVC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ContactsVC;
+			sourceTree = "<group>";
+		};
+		266D51482ACACFC200CAF1AD /* CartVC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CartVC;
+			sourceTree = "<group>";
+		};
+		266D51492ACAD00400CAF1AD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		266D514A2ACAD00B00CAF1AD /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		266D514B2ACAD01500CAF1AD /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		266D514C2ACAD03100CAF1AD /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				266D51582ACAD8C100CAF1AD /* PizzaService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		266D514D2ACAD03E00CAF1AD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		266D514E2ACAD0C300CAF1AD /* DetailMenuVC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DetailMenuVC;
+			sourceTree = "<group>";
+		};
+		266D51562ACAD7BA00CAF1AD /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				26998F4B2ACAC9CC00946CA5 /* TableView.swift */,
+				266D51572ACAD7C900CAF1AD /* Cells */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		266D51572ACAD7C900CAF1AD /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				266D51542ACAD24200CAF1AD /* ProductCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		26998F3B2ACAC9CC00946CA5 = {
 			isa = PBXGroup;
 			children = (
@@ -57,7 +147,12 @@
 			isa = PBXGroup;
 			children = (
 				26998F5B2ACAC9DF00946CA5 /* App */,
+				266D51492ACAD00400CAF1AD /* Models */,
 				26998F5D2ACAC9F200946CA5 /* Screens */,
+				266D514C2ACAD03100CAF1AD /* Services */,
+				266D514A2ACAD00B00CAF1AD /* Components */,
+				266D514B2ACAD01500CAF1AD /* Factory */,
+				266D514D2ACAD03E00CAF1AD /* Extensions */,
 				26998F5C2ACAC9EA00946CA5 /* Resources */,
 			);
 			path = "pizza-app";
@@ -86,7 +181,10 @@
 		26998F5D2ACAC9F200946CA5 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				26998F4B2ACAC9CC00946CA5 /* ViewController.swift */,
+				266D51462ACACF8C00CAF1AD /* MenuVC */,
+				266D514E2ACAD0C300CAF1AD /* DetailMenuVC */,
+				266D51472ACACF9A00CAF1AD /* ContactsVC */,
+				266D51482ACACFC200CAF1AD /* CartVC */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -107,6 +205,10 @@
 			dependencies = (
 			);
 			name = "pizza-app";
+			packageProductDependencies = (
+				266D51502ACAD1B400CAF1AD /* SnapKit */,
+				266D51522ACAD1B400CAF1AD /* SnapKit-Dynamic */,
+			);
 			productName = "pizza-app";
 			productReference = 26998F442ACAC9CC00946CA5 /* pizza-app.app */;
 			productType = "com.apple.product-type.application";
@@ -135,6 +237,9 @@
 				Base,
 			);
 			mainGroup = 26998F3B2ACAC9CC00946CA5;
+			packageReferences = (
+				266D514F2ACAD1B400CAF1AD /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 26998F452ACAC9CC00946CA5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -162,7 +267,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26998F4C2ACAC9CC00946CA5 /* ViewController.swift in Sources */,
+				26998F4C2ACAC9CC00946CA5 /* TableView.swift in Sources */,
+				266D51592ACAD8C100CAF1AD /* PizzaService.swift in Sources */,
+				266D51552ACAD24200CAF1AD /* ProductCell.swift in Sources */,
 				26998F482ACAC9CC00946CA5 /* AppDelegate.swift in Sources */,
 				26998F4A2ACAC9CC00946CA5 /* SceneDelegate.swift in Sources */,
 			);
@@ -387,6 +494,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		266D514F2ACAD1B400CAF1AD /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		266D51502ACAD1B400CAF1AD /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 266D514F2ACAD1B400CAF1AD /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		266D51522ACAD1B400CAF1AD /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 266D514F2ACAD1B400CAF1AD /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 26998F3C2ACAC9CC00946CA5 /* Project object */;
 }
