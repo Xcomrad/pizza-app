@@ -7,14 +7,6 @@ struct Pizza {
     var detail: String
     var price: Int
     var isNew: Bool
-    
-    init(image: String, name: String, detail: String, price: Int, isNew: Bool) {
-        self.image = image
-        self.name = name
-        self.detail = detail
-        self.price = price
-        self.isNew = isNew
-    }
 }
 
 

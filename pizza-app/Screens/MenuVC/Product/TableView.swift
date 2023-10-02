@@ -9,7 +9,7 @@ enum Section: Int, CaseIterable {
 }
 
 class TableView: UIViewController {
-
+    
     var pizzaService = PizzaService()
     var product: [Pizza] = []
     
@@ -23,8 +23,8 @@ class TableView: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        tableView.register(CategoryCollectionView.self, forCellReuseIdentifier: CategoryCollectionView.reuseId)
         tableView.register(ProductCell.self, forCellReuseIdentifier: ProductCell.reuseId)
-        
         return tableView
     }()
     
@@ -51,14 +51,39 @@ class TableView: UIViewController {
 
 extension TableView: UITableViewDelegate, UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return Section.allCases.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return product.count
+        
+        let section = Section.init(rawValue: section)
+        
+        switch section {
+        case .banner: return 1
+        case .ingredient: return 1
+        case .product: return product.count
+        default: return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ProductCell.reuseId, for: indexPath) as! ProductCell
-        let pizza = product[indexPath.row]
-        cell.update(pizza)
-        return cell
+        
+        let section = Section(rawValue: indexPath.section)
+        
+        switch section {
+        case .ingredient:
+            let cell = tableView.dequeueReusableCell(withIdentifier: CategoryCollectionView.reuseId, for: indexPath) as! CategoryCollectionView
+            return cell
+            
+        case .product:
+            let cell = tableView.dequeueReusableCell(withIdentifier: ProductCell.reuseId, for: indexPath) as! ProductCell
+            let pizza = product[indexPath.row]
+            cell.update(pizza)
+            return cell
+            
+        default:
+            return UITableViewCell()
+        }
     }
 }
