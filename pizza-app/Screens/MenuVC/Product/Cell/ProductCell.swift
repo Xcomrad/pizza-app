@@ -56,7 +56,7 @@ class ProductCell: UITableViewCell {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
         button.setTitleColor(.systemBrown, for: .normal)
         button.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        button.widthAnchor.constraint(equalToConstant: 80).isActive = true
         return button
     }()
     
@@ -105,7 +105,7 @@ class ProductCell: UITableViewCell {
         productImageView.image = UIImage(named: "\(product.image)")
         nameLabel.text = product.name
         detailLabel.text = product.detail
-        priceButton.setTitle("\(product.price) p.", for: .normal)
+        priceButton.setTitle("\(product.price) pуб.", for: .normal)
         
         if product.isNew == true {
             bageLabel.snp.makeConstraints { make in

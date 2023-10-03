@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26308E992ACC5FC200267B66 /* HeaderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26308E982ACC5FC200267B66 /* HeaderTableView.swift */; };
+		26308E9B2ACC76D100267B66 /* UIShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26308E9A2ACC76D100267B66 /* UIShadow.swift */; };
 		266D51512ACAD1B400CAF1AD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 266D51502ACAD1B400CAF1AD /* SnapKit */; };
 		266D51532ACAD1B400CAF1AD /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 266D51522ACAD1B400CAF1AD /* SnapKit-Dynamic */; };
 		266D51552ACAD24200CAF1AD /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266D51542ACAD24200CAF1AD /* ProductCell.swift */; };
@@ -26,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		26308E982ACC5FC200267B66 /* HeaderTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableView.swift; sourceTree = "<group>"; };
+		26308E9A2ACC76D100267B66 /* UIShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIShadow.swift; sourceTree = "<group>"; };
 		266D51542ACAD24200CAF1AD /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		266D51582ACAD8C100CAF1AD /* PizzaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaService.swift; sourceTree = "<group>"; };
 		266D515A2ACAF4E600CAF1AD /* CategoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionView.swift; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 		266D514D2ACAD03E00CAF1AD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				26308E9A2ACC76D100267B66 /* UIShadow.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -130,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				26998F4B2ACAC9CC00946CA5 /* TableView.swift */,
+				26308E982ACC5FC200267B66 /* HeaderTableView.swift */,
 				266D51572ACAD7C900CAF1AD /* Cell */,
 			);
 			path = Product;
@@ -321,11 +327,13 @@
 				26998F4C2ACAC9CC00946CA5 /* TableView.swift in Sources */,
 				266D51612ACAF80500CAF1AD /* CategoryService.swift in Sources */,
 				266D51592ACAD8C100CAF1AD /* PizzaService.swift in Sources */,
+				26308E992ACC5FC200267B66 /* HeaderTableView.swift in Sources */,
 				266D51552ACAD24200CAF1AD /* ProductCell.swift in Sources */,
 				266D515F2ACAF6FA00CAF1AD /* CategoryCell.swift in Sources */,
 				266D51662ACB02B000CAF1AD /* BannerCollectionView.swift in Sources */,
 				26998F482ACAC9CC00946CA5 /* AppDelegate.swift in Sources */,
 				26998F4A2ACAC9CC00946CA5 /* SceneDelegate.swift in Sources */,
+				26308E9B2ACC76D100267B66 /* UIShadow.swift in Sources */,
 				266D515B2ACAF4E600CAF1AD /* CategoryCollectionView.swift in Sources */,
 				266D51692ACB02CD00CAF1AD /* BannerCell.swift in Sources */,
 			);
