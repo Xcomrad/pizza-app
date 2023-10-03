@@ -27,7 +27,7 @@ class CategoryCollectionView: UITableViewCell {
         
         layout.minimumLineSpacing = padding
         layout.minimumInteritemSpacing = padding
-        layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        layout.sectionInset = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
         layout.itemSize = CGSize(width: 120, height: 35)
         layout.scrollDirection = .horizontal
         

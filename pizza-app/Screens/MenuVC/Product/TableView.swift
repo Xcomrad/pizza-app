@@ -3,12 +3,12 @@ import UIKit
 import SnapKit
 
 enum Section: Int, CaseIterable {
-    case banner
-    case ingredient
     case product
 }
 
 class TableView: UIViewController {
+    
+    let headerTableView = HeaderTableView(frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 320))
     
     var pizzaService = PizzaService()
     var product: [Pizza] = []
@@ -22,6 +22,8 @@ class TableView: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tableView.tableHeaderView = headerTableView
         
         tableView.register(CategoryCollectionView.self, forCellReuseIdentifier: CategoryCollectionView.reuseId)
         tableView.register(ProductCell.self, forCellReuseIdentifier: ProductCell.reuseId)
@@ -51,6 +53,10 @@ class TableView: UIViewController {
 
 extension TableView: UITableViewDelegate, UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return CategoryCollectionView()
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return Section.allCases.count
     }
@@ -60,8 +66,6 @@ extension TableView: UITableViewDelegate, UITableViewDataSource {
         let section = Section.init(rawValue: section)
         
         switch section {
-        case .banner: return 1
-        case .ingredient: return 1
         case .product: return product.count
         default: return 0
         }
@@ -72,10 +76,6 @@ extension TableView: UITableViewDelegate, UITableViewDataSource {
         let section = Section(rawValue: indexPath.section)
         
         switch section {
-        case .ingredient:
-            let cell = tableView.dequeueReusableCell(withIdentifier: CategoryCollectionView.reuseId, for: indexPath) as! CategoryCollectionView
-            return cell
-            
         case .product:
             let cell = tableView.dequeueReusableCell(withIdentifier: ProductCell.reuseId, for: indexPath) as! ProductCell
             let pizza = product[indexPath.row]
