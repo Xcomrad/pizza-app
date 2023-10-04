@@ -6,18 +6,17 @@ enum Section: Int, CaseIterable {
     case product
 }
 
-class TableView: UIViewController {
+final class TableView: UIViewController {
     
-    let headerTableView = HeaderTableView(frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 320))
+    private let headerTableView = HeaderTableView(frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 300))
     
-    var pizzaService = PizzaService()
-    var product: [Pizza] = []
+    private let pizzaService = PizzaService()
+    private var product: [Pizza] = []
     
-    lazy var tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let tableView = UITableView()
         
         tableView.showsVerticalScrollIndicator = false
-        tableView.allowsSelection = false
         tableView.separatorStyle = .none
         
         tableView.delegate = self
@@ -29,7 +28,7 @@ class TableView: UIViewController {
         tableView.register(ProductCell.self, forCellReuseIdentifier: ProductCell.reuseId)
         return tableView
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -37,21 +36,18 @@ class TableView: UIViewController {
         
         product = pizzaService.fetchPizza()
     }
-    
-    func setupViews() {
-        view.addSubview(tableView)
-    }
-    
-    func setupConstraints() {
-        tableView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
-        }
-    }
 }
 
 
 
 extension TableView: UITableViewDelegate, UITableViewDataSource {
+    
+    // show DetailMenuVC
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let detail = DetailMenuVC()
+        self.present(detail, animated: true)
+    }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return CategoryCollectionView()
@@ -78,12 +74,29 @@ extension TableView: UITableViewDelegate, UITableViewDataSource {
         switch section {
         case .product:
             let cell = tableView.dequeueReusableCell(withIdentifier: ProductCell.reuseId, for: indexPath) as! ProductCell
+            cell.selectionStyle = .none
+            
             let pizza = product[indexPath.row]
             cell.update(pizza)
             return cell
             
         default:
             return UITableViewCell()
+        }
+    }
+}
+
+
+
+extension TableView {
+    
+    private func setupViews() {
+        view.addSubview(tableView)
+    }
+    
+    private func setupConstraints() {
+        tableView.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
 }

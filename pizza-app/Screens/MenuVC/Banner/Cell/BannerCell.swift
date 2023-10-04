@@ -1,16 +1,16 @@
 
 import UIKit
 
-class BannerCell: UICollectionViewCell {
+final class BannerCell: UICollectionViewCell {
     
     static var reuseId = "BannerCell"
     
-    var imageView: UIImageView = {
-       let image = UIImageView()
+    private var imageView: UIImageView = {
+        let image = UIImageView()
         image.contentMode = .scaleAspectFill
         image.layer.borderWidth = 3
         image.layer.cornerRadius = 15
-        image.layer.borderColor = UIColor.orange.withAlphaComponent(0.5).cgColor
+        image.layer.borderColor = UIColor.systemOrange.cgColor
         image.layer.masksToBounds = true
         return image
     }()
@@ -24,12 +24,17 @@ class BannerCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+
+
+extension BannerCell {
     
-    func setupViews() {
+    private func setupViews() {
         contentView.addSubview(imageView)
     }
     
-    func setupConstraints() {
+    private func setupConstraints() {
         imageView.snp.makeConstraints { make in
             make.edges.equalTo(contentView)
         }

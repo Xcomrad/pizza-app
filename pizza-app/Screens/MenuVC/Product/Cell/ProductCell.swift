@@ -1,12 +1,11 @@
 
 import UIKit
 
-class ProductCell: UITableViewCell {
+final class ProductCell: UITableViewCell {
     
     static var reuseId = "ProductCell"
     
-    // Stacks
-    var horizontalStackView: UIStackView = {
+    private var horizontalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.spacing = 10
@@ -16,7 +15,7 @@ class ProductCell: UITableViewCell {
         return stackView
     }()
     
-    var verticalStackView: UIStackView = {
+    private var verticalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .leading
@@ -26,8 +25,7 @@ class ProductCell: UITableViewCell {
         return stackView
     }()
     
-    //Views
-    var productImageView: UIImageView = {
+    private var productImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
@@ -35,35 +33,32 @@ class ProductCell: UITableViewCell {
         return imageView
     }()
     
-    var nameLabel: UILabel = {
+    private var nameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.boldSystemFont(ofSize: 15)
         return label
     }()
     
-    var detailLabel: UILabel = {
+    private var detailLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15)
+        label.font = UIFont.systemFont(ofSize: 13)
         label.textColor = .systemGray
-        label.numberOfLines = 3
+        label.numberOfLines = .max
         return label
     }()
     
-    var priceButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .systemOrange.withAlphaComponent(0.5)
-        button.layer.cornerRadius = 15
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
-        button.setTitleColor(.systemBrown, for: .normal)
-        button.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        return button
+    private var priceLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.textColor = .systemOrange
+        label.font = UIFont.boldSystemFont(ofSize: 15)
+        return label
     }()
     
-    var bageLabel: UILabelPadding = {
+    private var bageLabel: UILabelPadding = {
         var label = UILabelPadding()
         label.textColor = .white
-        label.text = "New"
+        label.text = "New!"
         label.backgroundColor = .red
         label.font = UIFont.boldSystemFont(ofSize: 15)
         label.layer.cornerRadius = 10
@@ -82,8 +77,13 @@ class ProductCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+
+
+extension ProductCell {
     
-    func setupViews() {
+    private func setupViews() {
         contentView.addSubview(horizontalStackView)
         contentView.addSubview(bageLabel)
         
@@ -92,20 +92,26 @@ class ProductCell: UITableViewCell {
         
         verticalStackView.addArrangedSubview(nameLabel)
         verticalStackView.addArrangedSubview(detailLabel)
-        verticalStackView.addArrangedSubview(priceButton)
+        verticalStackView.addArrangedSubview(priceLabel)
+ 
     }
     
-    func setupConstraints() {
+    private func setupConstraints() {
         horizontalStackView.snp.makeConstraints { make in
             make.edges.equalTo(contentView)
         }
     }
+}
+
+
+
+extension ProductCell {
     
     func update(_ product: Pizza) {
         productImageView.image = UIImage(named: "\(product.image)")
         nameLabel.text = product.name
         detailLabel.text = product.detail
-        priceButton.setTitle("\(product.price) pуб.", for: .normal)
+        priceLabel.text = "\(product.price) руб."
         
         if product.isNew == true {
             bageLabel.snp.makeConstraints { make in
@@ -115,6 +121,7 @@ class ProductCell: UITableViewCell {
         }
     }
 }
+
 
 
 extension ProductCell {

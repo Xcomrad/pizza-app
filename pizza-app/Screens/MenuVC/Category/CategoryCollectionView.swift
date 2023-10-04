@@ -1,19 +1,19 @@
 
 import UIKit
 
-class CategoryCollectionView: UITableViewCell {
+final class CategoryCollectionView: UITableViewCell {
     
     static var reuseId = "CategoryCollectionView"
     
-    let categoryService = CategoryService()
-    var category: [Category] = []
+    private let categoryService = CategoryService()
+    private var category: [Category] = []
     
-    var containerView: UIView = {
+    private var containerView: UIView = {
         let container = UIView()
         return container
     }()
     
-    lazy var collectionView: UICollectionView = {
+    private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let itemsCount: CGFloat = 1
         let padding: CGFloat = 25
@@ -52,20 +52,6 @@ class CategoryCollectionView: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func setupViews() {
-        contentView.addSubview(containerView)
-        containerView.addSubview(collectionView)
-    }
-    
-    func setupConstraints() {
-        containerView.snp.makeConstraints { make in
-            make.edges.equalTo(contentView)
-        }
-        collectionView.snp.makeConstraints { make in
-            make.edges.equalTo(containerView)
-        }
-    }
 }
 
 
@@ -81,5 +67,24 @@ extension CategoryCollectionView: UICollectionViewDataSource, UICollectionViewDe
         let category = category[indexPath.row]
         cell.update(category)
         return cell
+    }
+}
+
+
+
+extension CategoryCollectionView {
+    
+    private func setupViews() {
+        contentView.addSubview(containerView)
+        containerView.addSubview(collectionView)
+    }
+    
+    private func setupConstraints() {
+        containerView.snp.makeConstraints { make in
+            make.edges.equalTo(contentView)
+        }
+        collectionView.snp.makeConstraints { make in
+            make.edges.equalTo(containerView)
+        }
     }
 }
