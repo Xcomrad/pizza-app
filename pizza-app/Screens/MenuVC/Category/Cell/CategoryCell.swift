@@ -7,9 +7,9 @@ class CategoryCell: UICollectionViewCell {
     
     var button: UIButton = {
        let button = UIButton()
-        button.backgroundColor = .systemOrange.withAlphaComponent(0.5)
+        button.backgroundColor = .systemGray6
         button.layer.cornerRadius = 15
-        button.setTitleColor(.systemBrown, for: .normal)
+        button.setTitleColor(.systemOrange, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
         button.heightAnchor.constraint(equalToConstant: 45).isActive = true
         button.widthAnchor.constraint(equalToConstant: 45).isActive = true

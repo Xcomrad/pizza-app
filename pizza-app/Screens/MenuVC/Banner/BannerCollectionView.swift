@@ -1,21 +1,21 @@
 
 import UIKit
 
-class BannerCollectionView: UITableViewCell {
+final class BannerCollectionView: UITableViewCell {
     
-    static var reuseId = "BannerCollectionView"
+    var reuseId = "BannerCollectionView"
     
-    let bannerService = BannerService()
-    var banner: [Banner] = []
+    private let bannerService = BannerService()
+    private var banner: [Banner] = []
     
-    var containerStack: UIStackView = {
-       let stack = UIStackView()
+    private var containerStack: UIStackView = {
+        let stack = UIStackView()
         stack.heightAnchor.constraint(equalToConstant: 150).isActive = true
         stack.isLayoutMarginsRelativeArrangement = false
         return stack
     }()
     
-    lazy var collectionView: UICollectionView = {
+    private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let itemsCount: CGFloat = 1
         let padding: CGFloat = 25
@@ -54,20 +54,6 @@ class BannerCollectionView: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func setupViews() {
-        contentView.addSubview(containerStack)
-        containerStack.addSubview(collectionView)
-    }
-    
-    func setupConstraints() {
-        containerStack.snp.makeConstraints { make in
-            make.edges.equalTo(contentView)
-        }
-        collectionView.snp.makeConstraints { make in
-            make.edges.equalTo(containerStack)
-        }
-    }
 }
 
 
@@ -80,7 +66,6 @@ extension BannerCollectionView: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BannerCell.reuseId, for: indexPath) as! BannerCell
-        cell.addShadow(color: .black, opacity: 0.5, radius: 5, offset: CGSize(width: 0, height: 3))
         let banner = banner[indexPath.row]
         cell.update(banner)
         return cell
@@ -88,3 +73,20 @@ extension BannerCollectionView: UICollectionViewDelegate, UICollectionViewDataSo
 }
 
 
+
+extension BannerCollectionView {
+    
+    private func setupViews() {
+        contentView.addSubview(containerStack)
+        containerStack.addSubview(collectionView)
+    }
+    
+    private func setupConstraints() {
+        containerStack.snp.makeConstraints { make in
+            make.edges.equalTo(contentView)
+        }
+        collectionView.snp.makeConstraints { make in
+            make.edges.equalTo(containerStack)
+        }
+    }
+}
