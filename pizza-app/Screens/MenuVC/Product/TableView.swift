@@ -91,6 +91,7 @@ extension TableView: UITableViewDelegate, UITableViewDataSource {
 extension TableView {
     
     private func setupViews() {
+        view.backgroundColor = .white
         view.addSubview(tableView)
     }
     
