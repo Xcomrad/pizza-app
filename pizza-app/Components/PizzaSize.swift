@@ -9,7 +9,6 @@ final class PizzaSize: UITableViewCell {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.backgroundColor = .systemGray5
-       stack.layer.cornerRadius = 15
         stack.alignment = .center
         stack.distribution = .equalSpacing
         stack.directionalLayoutMargins = .init(top: 10, leading: 20, bottom: 10, trailing: 20)
@@ -74,7 +73,7 @@ extension PizzaSize {
     
     private func setupConstraints() {
         horizontalStack.snp.makeConstraints { make in
-            make.edges.equalTo(self).inset(10)
+            make.edges.equalTo(self)
         }
     }
     
