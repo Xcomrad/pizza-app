@@ -1,16 +1,18 @@
 
 import UIKit
 
-final class PizzaSize: UITableViewCell {
+final class DetailPizzaSize: UITableViewCell {
     
-    static var reuseId = "PizzaSize"
+    static var reuseId = "DetailPizzaSize"
     
-   private var horizontalStack: UIStackView = {
+    private var horizontalStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.backgroundColor = .systemGray5
         stack.alignment = .center
         stack.distribution = .equalSpacing
+        stack.layer.cornerRadius = 10
+        stack.addShadow(color: .black, opacity: 0.5, radius: 5, offset: CGSize(width: 0, height: 5))
         stack.directionalLayoutMargins = .init(top: 10, leading: 20, bottom: 10, trailing: 20)
         stack.isLayoutMarginsRelativeArrangement = true
         return stack
@@ -61,7 +63,7 @@ final class PizzaSize: UITableViewCell {
 
 
 
-extension PizzaSize {
+extension DetailPizzaSize {
     
     private func setupViews() {
         self.addSubview(horizontalStack)
@@ -73,7 +75,8 @@ extension PizzaSize {
     
     private func setupConstraints() {
         horizontalStack.snp.makeConstraints { make in
-            make.edges.equalTo(self)
+            make.top.bottom.equalTo(self).inset(20)
+            make.left.right.equalTo(self).inset(10)
         }
     }
     

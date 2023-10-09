@@ -11,12 +11,15 @@ class DetailMenuVC: UIViewController {
     
     lazy var tableView: UITableView = {
         let tableView = UITableView()
+        tableView.allowsSelection = false
+        tableView.separatorStyle = .none
         
         tableView.delegate = self
         tableView.dataSource = self
         
         tableView.register(ProductDetailCell.self, forCellReuseIdentifier: ProductDetailCell.reuseId)
-        tableView.register(PizzaSize.self, forCellReuseIdentifier: PizzaSize.reuseId)
+        tableView.register(DetailPizzaSize.self, forCellReuseIdentifier: DetailPizzaSize.reuseId)
+        tableView.register(IngredientCollectionView.self, forCellReuseIdentifier: IngredientCollectionView.reuseId)
         
         return tableView
     }()
@@ -67,9 +70,15 @@ extension DetailMenuVC: UITableViewDelegate, UITableViewDataSource {
         case .product:
             let cell = tableView.dequeueReusableCell(withIdentifier: ProductDetailCell.reuseId, for: indexPath) as! ProductDetailCell
             return cell
+            
         case .pizzaSize:
-            let cell = tableView.dequeueReusableCell(withIdentifier: PizzaSize.reuseId , for: indexPath) as! PizzaSize
+            let cell = tableView.dequeueReusableCell(withIdentifier: DetailPizzaSize.reuseId , for: indexPath) as! DetailPizzaSize
             return cell
+            
+        case .ingredient:
+            let cell = tableView.dequeueReusableCell(withIdentifier: IngredientCollectionView.reuseId, for: indexPath) as! IngredientCollectionView
+            return cell
+            
         default:
             return UITableViewCell()
         }
