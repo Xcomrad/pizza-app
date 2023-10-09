@@ -6,13 +6,13 @@ final class HeaderTableComponent: UIView {
     private var verticalStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
-        stack.spacing = 15
+        stack.alignment = .center
+        stack.spacing = 10
         stack.backgroundColor = .systemGray6
         stack.layer.cornerRadius = 10
-        stack.alignment = .center
+        stack.addShadow(color: .black, opacity: 0.5, radius: 5, offset: CGSize(width: 0, height: 5))
         stack.directionalLayoutMargins = .init(top: 10, leading: 10, bottom: 20, trailing: 10)
         stack.isLayoutMarginsRelativeArrangement = true
-        stack.addShadow(color: .black, opacity: 0.5, radius: 3, offset: CGSize(width: 0, height: 3))
         return stack
     }()
     

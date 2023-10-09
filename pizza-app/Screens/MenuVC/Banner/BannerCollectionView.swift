@@ -10,23 +10,13 @@ final class BannerCollectionView: UITableViewCell {
     
     private var containerStack: UIStackView = {
         let stack = UIStackView()
-        stack.heightAnchor.constraint(equalToConstant: 150).isActive = true
-        stack.isLayoutMarginsRelativeArrangement = false
+        stack.heightAnchor.constraint(equalToConstant: 100).isActive = true
         return stack
     }()
     
     private lazy var collectionView: UICollectionView = {
+        let padding: CGFloat = 20
         let layout = UICollectionViewFlowLayout()
-        let itemsCount: CGFloat = 1
-        let padding: CGFloat = 25
-        let paddingCount: CGFloat = itemsCount + 1
-        
-        layout.minimumLineSpacing = padding
-        layout.minimumInteritemSpacing = padding
-        
-        let paddingSize = paddingCount * padding
-        let cellSize = (UIScreen.main.bounds.width - paddingSize) / itemsCount / 3
-        
         layout.minimumLineSpacing = padding
         layout.minimumInteritemSpacing = padding
         layout.sectionInset = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)

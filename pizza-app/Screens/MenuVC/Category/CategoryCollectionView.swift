@@ -10,21 +10,13 @@ final class CategoryCollectionView: UITableViewCell {
     
     private var containerView: UIView = {
         let container = UIView()
+        container.heightAnchor.constraint(equalToConstant: 70).isActive = true
         return container
     }()
     
     private lazy var collectionView: UICollectionView = {
+        let padding: CGFloat = 20
         let layout = UICollectionViewFlowLayout()
-        let itemsCount: CGFloat = 1
-        let padding: CGFloat = 25
-        let paddingCount: CGFloat = itemsCount + 1
-        
-        layout.minimumLineSpacing = padding
-        layout.minimumInteritemSpacing = padding
-        
-        let paddingSize = paddingCount * padding
-        let cellSize = (UIScreen.main.bounds.width - paddingSize) / itemsCount / 3
-        
         layout.minimumLineSpacing = padding
         layout.minimumInteritemSpacing = padding
         layout.sectionInset = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)

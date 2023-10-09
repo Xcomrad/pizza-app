@@ -50,7 +50,6 @@ final class ProductCell: UITableViewCell {
     private var priceLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.textColor = .systemOrange
         label.font = UIFont.boldSystemFont(ofSize: 15)
         return label
     }()
