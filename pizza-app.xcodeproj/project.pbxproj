@@ -19,6 +19,7 @@
 		266D51632ACB026D00CAF1AD /* BannerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266D51622ACB026D00CAF1AD /* BannerService.swift */; };
 		266D51662ACB02B000CAF1AD /* BannerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266D51652ACB02B000CAF1AD /* BannerCollectionView.swift */; };
 		266D51692ACB02CD00CAF1AD /* BannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266D51682ACB02CD00CAF1AD /* BannerCell.swift */; };
+		2696C94C2AD5702300C9164D /* CallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2696C94B2AD5702300C9164D /* CallView.swift */; };
 		26998F482ACAC9CC00946CA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26998F472ACAC9CC00946CA5 /* AppDelegate.swift */; };
 		26998F4A2ACAC9CC00946CA5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26998F492ACAC9CC00946CA5 /* SceneDelegate.swift */; };
 		26998F4C2ACAC9CC00946CA5 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26998F4B2ACAC9CC00946CA5 /* TableView.swift */; };
@@ -35,6 +36,9 @@
 		26E728E52ACEEC7A007FFDE6 /* CartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E728E42ACEEC7A007FFDE6 /* CartVC.swift */; };
 		26E728E82ACF00FA007FFDE6 /* ProductDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E728E72ACF00FA007FFDE6 /* ProductDetailCell.swift */; };
 		26E728EA2ACF05A6007FFDE6 /* DetailPizzaSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E728E92ACF05A6007FFDE6 /* DetailPizzaSize.swift */; };
+		26FD15EC2AD45D0C00BAE915 /* MapHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FD15EB2AD45D0C00BAE915 /* MapHeaderView.swift */; };
+		26FD15EE2AD45D2600BAE915 /* ButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FD15ED2AD45D2600BAE915 /* ButtonsView.swift */; };
+		26FD15F02AD45D3600BAE915 /* DocumentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FD15EF2AD45D3600BAE915 /* DocumentsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +52,7 @@
 		266D51622ACB026D00CAF1AD /* BannerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerService.swift; sourceTree = "<group>"; };
 		266D51652ACB02B000CAF1AD /* BannerCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionView.swift; sourceTree = "<group>"; };
 		266D51682ACB02CD00CAF1AD /* BannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCell.swift; sourceTree = "<group>"; };
+		2696C94B2AD5702300C9164D /* CallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallView.swift; sourceTree = "<group>"; };
 		26998F442ACAC9CC00946CA5 /* pizza-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pizza-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26998F472ACAC9CC00946CA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26998F492ACAC9CC00946CA5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +71,9 @@
 		26E728E42ACEEC7A007FFDE6 /* CartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartVC.swift; sourceTree = "<group>"; };
 		26E728E72ACF00FA007FFDE6 /* ProductDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailCell.swift; sourceTree = "<group>"; };
 		26E728E92ACF05A6007FFDE6 /* DetailPizzaSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPizzaSize.swift; sourceTree = "<group>"; };
+		26FD15EB2AD45D0C00BAE915 /* MapHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHeaderView.swift; sourceTree = "<group>"; };
+		26FD15ED2AD45D2600BAE915 /* ButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsView.swift; sourceTree = "<group>"; };
+		26FD15EF2AD45D3600BAE915 /* DocumentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				26E728E22ACEEC4D007FFDE6 /* ContactsVC.swift */,
+				26FD15EA2AD45C0900BAE915 /* ContactViews */,
 			);
 			path = ContactsVC;
 			sourceTree = "<group>";
@@ -299,6 +308,17 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		26FD15EA2AD45C0900BAE915 /* ContactViews */ = {
+			isa = PBXGroup;
+			children = (
+				26FD15EB2AD45D0C00BAE915 /* MapHeaderView.swift */,
+				2696C94B2AD5702300C9164D /* CallView.swift */,
+				26FD15ED2AD45D2600BAE915 /* ButtonsView.swift */,
+				26FD15EF2AD45D3600BAE915 /* DocumentsView.swift */,
+			);
+			path = ContactViews;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -383,6 +403,8 @@
 				266D51592ACAD8C100CAF1AD /* PizzaService.swift in Sources */,
 				26308E992ACC5FC200267B66 /* HeaderTableView.swift in Sources */,
 				266D51552ACAD24200CAF1AD /* ProductCell.swift in Sources */,
+				26FD15EE2AD45D2600BAE915 /* ButtonsView.swift in Sources */,
+				26FD15F02AD45D3600BAE915 /* DocumentsView.swift in Sources */,
 				266D515F2ACAF6FA00CAF1AD /* CategoryCell.swift in Sources */,
 				26E728B52ACD59EF007FFDE6 /* HeaderTableComponent.swift in Sources */,
 				266D51662ACB02B000CAF1AD /* BannerCollectionView.swift in Sources */,
@@ -394,7 +416,9 @@
 				26E728E12ACEEA16007FFDE6 /* MainTabBarController.swift in Sources */,
 				26E728B72ACD6E39007FFDE6 /* DetailMenuVC.swift in Sources */,
 				26E728E52ACEEC7A007FFDE6 /* CartVC.swift in Sources */,
+				26FD15EC2AD45D0C00BAE915 /* MapHeaderView.swift in Sources */,
 				266D515B2ACAF4E600CAF1AD /* CategoryCollectionView.swift in Sources */,
+				2696C94C2AD5702300C9164D /* CallView.swift in Sources */,
 				266D51692ACB02CD00CAF1AD /* BannerCell.swift in Sources */,
 				26E728E82ACF00FA007FFDE6 /* ProductDetailCell.swift in Sources */,
 				26E728E32ACEEC4D007FFDE6 /* ContactsVC.swift in Sources */,
