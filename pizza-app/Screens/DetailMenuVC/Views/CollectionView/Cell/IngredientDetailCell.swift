@@ -79,3 +79,5 @@ extension IngredientDetailCell {
         priceLabel.text = "\(ingredient.price) руб."
     }
 }
+
+

@@ -7,44 +7,36 @@ enum DetailSection: Int, CaseIterable {
     case ingredient
 }
 
-class DetailMenuVC: UIViewController {
+ final class DetailTableView: UITableView {
+     
+     private var product: [Product] = []
     
-    lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.allowsSelection = false
-        tableView.separatorStyle = .none
+    override init(frame: CGRect, style: UITableView.Style) {
+        super.init(frame: .zero, style: .plain)
+        self.allowsSelection = false
+        self.separatorStyle = .none
         
-        tableView.delegate = self
-        tableView.dataSource = self
+        self.delegate = self
+        self.dataSource = self
         
-        tableView.register(ProductDetailCell.self, forCellReuseIdentifier: ProductDetailCell.reuseId)
-        tableView.register(DetailPizzaSize.self, forCellReuseIdentifier: DetailPizzaSize.reuseId)
-        tableView.register(IngredientCollectionView.self, forCellReuseIdentifier: IngredientCollectionView.reuseId)
+        self.register(ProductDetailCell.self, forCellReuseIdentifier: ProductDetailCell.reuseId)
+        self.register(DetailPizzaSize.self, forCellReuseIdentifier: DetailPizzaSize.reuseId)
+        self.register(CollectionForTableCell.self, forCellReuseIdentifier: CollectionForTableCell.reuseId)
         
-        return tableView
-    }()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupViews()
-        setupConstraints()
     }
     
-    func setupViews() {
-        view.backgroundColor = .white
-        view.addSubview(tableView)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-    
-    func setupConstraints() {
-        tableView.snp.makeConstraints { make in
-            make.edges.equalTo(view)
-        }
-    }
+     
+     func update(_ product: [Product]) {
+         self.product = product
+     }
 }
 
 
 
-extension DetailMenuVC: UITableViewDelegate, UITableViewDataSource {
+extension DetailTableView: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return DetailSection.allCases.count
@@ -69,6 +61,8 @@ extension DetailMenuVC: UITableViewDelegate, UITableViewDataSource {
         switch section {
         case .product:
             let cell = tableView.dequeueReusableCell(withIdentifier: ProductDetailCell.reuseId, for: indexPath) as! ProductDetailCell
+            let product = product[indexPath.row]
+            cell.update(product)
             return cell
             
         case .pizzaSize:
@@ -76,7 +70,7 @@ extension DetailMenuVC: UITableViewDelegate, UITableViewDataSource {
             return cell
             
         case .ingredient:
-            let cell = tableView.dequeueReusableCell(withIdentifier: IngredientCollectionView.reuseId, for: indexPath) as! IngredientCollectionView
+            let cell = tableView.dequeueReusableCell(withIdentifier: CollectionForTableCell.reuseId, for: indexPath) as! CollectionForTableCell
             return cell
             
         default:

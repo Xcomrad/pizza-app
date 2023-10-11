@@ -1,33 +1,35 @@
+
 import UIKit
 
-final class CallView: UITableViewCell {
+final class DocumentsCell: UITableViewCell {
     
-    static var reuseId = "CallView"
+    static var reuseId = "DocumentsView"
     
     private var container: UIStackView = {
         let stack = UIStackView()
-        stack.axis = .vertical
-        stack.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        stack.heightAnchor.constraint(equalToConstant: 50).isActive = true
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     
-    private var callLabel: UILabel = {
+    private var horizontalStack: UIStackView = {
+       let stack = UIStackView()
+        stack.axis = .horizontal
+        return stack
+    }()
+    
+    private var docLabel: UILabel = {
         let label = UILabel()
-        label.text = "Связаться с поддержкой"
-        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.text = "Правовые документы"
+        label.font = UIFont.systemFont(ofSize: 20)
         label.textAlignment = .left
         return label
     }()
     
-    private var callButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Позвонить", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        button.backgroundColor = .orange.withAlphaComponent(0.7)
-        button.layer.cornerRadius = 25
-        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    private var docButton: UIButton = {
+       let button = UIButton()
+        button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        button.tintColor = .systemOrange
         return button
     }()
     
@@ -44,13 +46,14 @@ final class CallView: UITableViewCell {
 
 
 
-extension CallView {
+extension DocumentsCell {
     
     private func setupViews() {
         contentView.addSubview(container)
         
-        container.addArrangedSubview(callLabel)
-        container.addArrangedSubview(callButton)
+        container.addArrangedSubview(horizontalStack)
+        horizontalStack.addArrangedSubview(docLabel)
+        horizontalStack.addArrangedSubview(docButton)
     }
     
     private func setupConstraints() {

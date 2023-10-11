@@ -61,7 +61,7 @@ extension ProductDetailCell {
         }
     }
     
-    func update(_ product: Pizza) {
+    func update(_ product: Product) {
         detailImageView.image = UIImage(named: "\(product.image)")
         namelabel.text = product.name
         detailLabel.text = product.detail

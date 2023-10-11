@@ -30,6 +30,7 @@ extension HeaderTableView {
     private func setupViews() {
         self.addSubview(component)
         self.addSubview(containerStack)
+        
         containerStack.addSubview(bannerCollection)
     }
     
