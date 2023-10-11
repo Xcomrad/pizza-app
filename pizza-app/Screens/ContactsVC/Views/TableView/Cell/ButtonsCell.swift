@@ -1,7 +1,7 @@
 
 import UIKit
 
-final class ButtonsView: UITableViewCell {
+final class ButtonsCell: UITableViewCell {
     
     static var reuseId = "ButtonsView"
     
@@ -79,7 +79,7 @@ final class ButtonsView: UITableViewCell {
 
 
 
-extension ButtonsView {
+extension ButtonsCell {
     
     private func setupViews() {
         contentView.addSubview(container)

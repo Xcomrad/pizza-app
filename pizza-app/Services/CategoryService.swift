@@ -1,9 +1,5 @@
 
-import UIKit
-
-struct Category {
-    var name: String
-}
+import Foundation
 
 struct CategoryService {
     let category: [Category] = [

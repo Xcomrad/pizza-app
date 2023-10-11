@@ -1,9 +1,5 @@
 
-import UIKit
-
-struct Banner {
-    var image: String
-}
+import Foundation
 
 struct BannerService {
     let banner: [Banner] = [

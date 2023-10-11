@@ -1,11 +1,5 @@
 
-import UIKit
-
-struct Ingredient {
-    var image: String
-    var name: String
-    var price: Int
-}
+import Foundation
 
 struct IngredientService {
     let ingredient: [Ingredient] = [
