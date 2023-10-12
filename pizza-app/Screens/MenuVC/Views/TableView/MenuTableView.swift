@@ -52,7 +52,6 @@ extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         let section = Section.init(rawValue: section)
         
         switch section {
@@ -62,7 +61,6 @@ extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let section = Section(rawValue: indexPath.section)
         
         switch section {
