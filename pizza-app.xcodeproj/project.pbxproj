@@ -34,6 +34,8 @@
 		26998F542ACAC9CE00946CA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26998F522ACAC9CE00946CA5 /* LaunchScreen.storyboard */; };
 		26ADA5B22AD3F1AE00120E1C /* IngredientService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ADA5B12AD3F1AE00120E1C /* IngredientService.swift */; };
 		26ADA5B52AD3F38F00120E1C /* CollectionForTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ADA5B42AD3F38F00120E1C /* CollectionForTableCell.swift */; };
+		26DB40762AD95F1B0078A246 /* OrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DB40752AD95F1B0078A246 /* OrderService.swift */; };
+		26DB40782AD96A490078A246 /* ButtonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DB40772AD96A490078A246 /* ButtonFactory.swift */; };
 		26E728B52ACD59EF007FFDE6 /* HeaderTableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E728B42ACD59EF007FFDE6 /* HeaderTableComponent.swift */; };
 		26E728B72ACD6E39007FFDE6 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E728B62ACD6E39007FFDE6 /* DetailVC.swift */; };
 		26E728E12ACEEA16007FFDE6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E728E02ACEEA16007FFDE6 /* MainTabBarController.swift */; };
@@ -86,6 +88,8 @@
 		26998F552ACAC9CE00946CA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26ADA5B12AD3F1AE00120E1C /* IngredientService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientService.swift; sourceTree = "<group>"; };
 		26ADA5B42AD3F38F00120E1C /* CollectionForTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionForTableCell.swift; sourceTree = "<group>"; };
+		26DB40752AD95F1B0078A246 /* OrderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderService.swift; sourceTree = "<group>"; };
+		26DB40772AD96A490078A246 /* ButtonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFactory.swift; sourceTree = "<group>"; };
 		26E728B42ACD59EF007FFDE6 /* HeaderTableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableComponent.swift; sourceTree = "<group>"; };
 		26E728B62ACD6E39007FFDE6 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		26E728E02ACEEA16007FFDE6 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -193,6 +197,7 @@
 				266D51622ACB026D00CAF1AD /* BannerService.swift */,
 				266D51602ACAF80500CAF1AD /* CategoryService.swift */,
 				26ADA5B12AD3F1AE00120E1C /* IngredientService.swift */,
+				26DB40752AD95F1B0078A246 /* OrderService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -360,6 +365,7 @@
 		26F9A1BB2AD6BB290079CCC5 /* Factories */ = {
 			isa = PBXGroup;
 			children = (
+				26DB40772AD96A490078A246 /* ButtonFactory.swift */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -532,6 +538,7 @@
 				260773D92AD82E61004E6E27 /* CartProductCell.swift in Sources */,
 				266D51632ACB026D00CAF1AD /* BannerService.swift in Sources */,
 				26F9A1CC2AD6DFE80079CCC5 /* DetailView.swift in Sources */,
+				26DB40762AD95F1B0078A246 /* OrderService.swift in Sources */,
 				26998F4C2ACAC9CC00946CA5 /* MenuVC.swift in Sources */,
 				266D51612ACAF80500CAF1AD /* CategoryService.swift in Sources */,
 				266D51592ACAD8C100CAF1AD /* ProductService.swift in Sources */,
@@ -554,6 +561,7 @@
 				260773D72AD82D9C004E6E27 /* TableView.swift in Sources */,
 				260773E22AD83453004E6E27 /* EmptyView.swift in Sources */,
 				26F9A1B82AD6B28C0079CCC5 /* MenuView.swift in Sources */,
+				26DB40782AD96A490078A246 /* ButtonFactory.swift in Sources */,
 				26E728B72ACD6E39007FFDE6 /* DetailVC.swift in Sources */,
 				26F9A1BE2AD6BC0C0079CCC5 /* ProductModel.swift in Sources */,
 				26F9A1B62AD6AAC80079CCC5 /* MenuTableView.swift in Sources */,
