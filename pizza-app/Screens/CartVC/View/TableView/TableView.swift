@@ -12,6 +12,7 @@ class TableView: UITableView {
         super.init(frame: .zero, style: .plain)
         
         self.allowsSelection = false
+        self.showsVerticalScrollIndicator = false
         
         self.dataSource = self
         self.delegate = self
