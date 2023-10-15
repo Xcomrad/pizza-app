@@ -11,56 +11,43 @@ final class HeaderTableComponent: UIView {
         stack.backgroundColor = .systemGray6
         stack.layer.cornerRadius = 10
         stack.addShadow(color: .black, opacity: 0.5, radius: 5, offset: CGSize(width: 0, height: 5))
-        stack.directionalLayoutMargins = .init(top: 10, leading: 10, bottom: 20, trailing: 10)
+        stack.directionalLayoutMargins = .init(top: 20, leading: 10, bottom: 10, trailing: 10)
         stack.isLayoutMarginsRelativeArrangement = true
         return stack
     }()
     
-    private var horizontalStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.backgroundColor = .systemGray5
-        stack.layer.cornerRadius = 10
-        stack.alignment = .center
-        stack.distribution = .equalSpacing
-        stack.directionalLayoutMargins = .init(top: 10, leading: 10, bottom: 10, trailing: 10)
-        stack.isLayoutMarginsRelativeArrangement = true
-        return stack
+    private lazy var segmentControll: UISegmentedControl = {
+        let segmentArray = ["В пиццерии", "На доставку"]
+        let controll = UISegmentedControl(items: segmentArray)
+   
+        controll.selectedSegmentIndex = 0
+        controll.selectedSegmentTintColor = .systemOrange.withAlphaComponent(0.6)
+        controll.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        controll.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        return controll
     }()
     
-    private var deliveryButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("На доставку", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.layer.cornerRadius = 10
-        button.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 160).isActive = true
+   private var separator: UIView = {
+       let separator = UIView()
+        separator.backgroundColor = .systemGray5
+        separator.heightAnchor.constraint(equalToConstant: 1).isActive = true
+       separator.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        return separator
+    }()
+    
+    private lazy var addressButton: UIButton = {
+       let button = UIButton()
+        button.setTitle("Указать адрес доставки >", for: .normal)
+        button.setTitleColor(.systemOrange, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        //button.addTarget(self, action: #selector(<#T##@objc method#>), for: .touchUpInside)
         return button
-    }()
-    
-    private var hallButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("В залле", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.layer.cornerRadius = 10
-        button.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 160).isActive = true
-        return button
-    }()
-    
-    private var addressLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Укажите ваш адрес >"
-        label.font = UIFont.boldSystemFont(ofSize: 17)
-        label.textColor = .systemOrange
-        return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
         setupConstraints()
-        setupButtonCollor()
     }
     
     required init?(coder: NSCoder) {
@@ -74,28 +61,16 @@ extension HeaderTableComponent {
     
     private func setupViews() {
         self.addSubview(verticalStack)
-        verticalStack.addArrangedSubview(horizontalStack)
         
-        horizontalStack.addArrangedSubview(hallButton)
-        horizontalStack.addArrangedSubview(deliveryButton)
-        
-        verticalStack.addArrangedSubview(addressLabel)
+        verticalStack.addArrangedSubview(segmentControll)
+        verticalStack.addArrangedSubview(separator)
+        verticalStack.addArrangedSubview(addressButton)
     }
     
     private func setupConstraints() {
         verticalStack.snp.makeConstraints { make in
-            make.top.equalTo(self)
+            make.top.equalTo(self.safeAreaLayoutGuide)
             make.left.right.equalTo(self).inset(20)
-        }
-    }
-    
-   private func setupButtonCollor() {
-        if deliveryButton.isSelected == true {
-            deliveryButton.backgroundColor = .white
-            hallButton.backgroundColor = .systemGray5
-        } else {
-            hallButton.backgroundColor = .white
-            deliveryButton.backgroundColor = .systemGray5
         }
     }
 }
