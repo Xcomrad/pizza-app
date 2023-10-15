@@ -5,55 +5,43 @@ final class DetailPizzaSize: UITableViewCell {
     
     static var reuseId = "DetailPizzaSize"
     
-    private var horizontalStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.backgroundColor = .systemGray5
-        stack.alignment = .center
-        stack.distribution = .equalSpacing
-        stack.layer.cornerRadius = 10
-        stack.addShadow(color: .black, opacity: 0.5, radius: 5, offset: CGSize(width: 0, height: 5))
-        stack.directionalLayoutMargins = .init(top: 10, leading: 20, bottom: 10, trailing: 20)
+    private var imageArray:[UIImage?] = [UIImage(named: "big"),
+                                         UIImage(named: "middle"),
+                                         UIImage(named: "small")]
+    
+    var verticalStack: UIStackView = {
+       let stack = UIStackView()
+        stack.axis = .vertical
+        stack.spacing = 10
+        stack.directionalLayoutMargins = .init(top: 10, leading: 10, bottom: 10, trailing: 10)
         stack.isLayoutMarginsRelativeArrangement = true
         return stack
     }()
     
-    private var littleButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Маленькая", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.layer.cornerRadius = 10
-        button.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        return button
+    var pizzaImage: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "middle")
+        image.contentMode = .scaleAspectFit
+        image.heightAnchor.constraint(equalToConstant: 250).isActive = true
+        image.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        return image
     }()
     
-    private var midleButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Средняя", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = .white
-        button.layer.cornerRadius = 10
-        button.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        return button
-    }()
-    
-    private var hightButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Большая", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.layer.cornerRadius = 10
-        button.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        return button
+    lazy var segmentControll: UISegmentedControl = {
+        var controllItem = ["Большая", "Средняя", "Маленькая"]
+        var controll = UISegmentedControl(items: controllItem)
+        
+        controll.selectedSegmentIndex = 1
+        controll.selectedSegmentTintColor = .systemOrange.withAlphaComponent(0.6)
+        controll.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        controll.addTarget(self, action: #selector(nextPizza(target:)), for: .valueChanged)
+        return controll
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupViews()
+        setipViews()
         setupConstraints()
-        setupSize()
     }
     
     required init?(coder: NSCoder) {
@@ -65,36 +53,25 @@ final class DetailPizzaSize: UITableViewCell {
 
 extension DetailPizzaSize {
     
-    private func setupViews() {
-        self.addSubview(horizontalStack)
+    @objc func nextPizza(target: UISegmentedControl) {
+        if target == self.segmentControll {
+            let segmentIndex = target.selectedSegmentIndex
+            self.pizzaImage.image = self.imageArray[segmentIndex]
+        }
+    }
+    
+    private func setipViews() {
+        contentView.addSubview(verticalStack)
         
-        horizontalStack.addArrangedSubview(littleButton)
-        horizontalStack.addArrangedSubview(midleButton)
-        horizontalStack.addArrangedSubview(hightButton)
+        verticalStack.addArrangedSubview(pizzaImage)
+        verticalStack.addArrangedSubview(segmentControll)
     }
     
     private func setupConstraints() {
-        horizontalStack.snp.makeConstraints { make in
-            make.top.bottom.equalTo(self).inset(20)
-            make.left.right.equalTo(self).inset(10)
-        }
-    }
-    
-    private func setupSize() {
-        if midleButton.isSelected == true {
-            midleButton.backgroundColor = .white
-            littleButton.backgroundColor = .systemGray5
-            hightButton.backgroundColor = .systemGray5
-        } else if
-            littleButton.isSelected == true {
-            littleButton.backgroundColor = .white
-            midleButton.backgroundColor = .systemGray5
-            hightButton.backgroundColor = .systemGray5
-        } else if
-            hightButton.isSelected == true {
-            hightButton.backgroundColor = .white
-            midleButton.backgroundColor = .systemGray5
-            littleButton.backgroundColor = .systemGray5
+        verticalStack.snp.makeConstraints { make in
+            make.edges.equalTo(contentView)
         }
     }
 }
+
+
