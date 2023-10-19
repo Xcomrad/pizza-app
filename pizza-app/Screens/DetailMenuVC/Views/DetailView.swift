@@ -1,7 +1,7 @@
 
 import UIKit
 
-class DetailView: UIView {
+final class DetailView: UIView {
     
     private var products: [Product] = []
     private var ingredient: [Ingredient] = []
@@ -22,6 +22,7 @@ class DetailView: UIView {
     func update(_ product: [Product], _ ingredient: [Ingredient]) {
         self.products = product
         self.ingredient = ingredient
+        tableView.update(product, ingredient)
     }
 }
 

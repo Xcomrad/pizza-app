@@ -6,13 +6,11 @@ final class CollectionForTableCell: UITableViewCell {
     static var reuseId = "CollectionForTableCell"
     
     private let collectionView = DetailCollectionView()
-    
     private var ingredient: [Ingredient] = []
-    private let service = IngredientService()
     
     private var containerView: UIStackView = {
         let stack = UIStackView()
-        stack.heightAnchor.constraint(equalToConstant: 1350).isActive = true
+        stack.heightAnchor.constraint(equalToConstant: 1000).isActive = true
         return stack
     }()
     
@@ -20,8 +18,6 @@ final class CollectionForTableCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
         setupContraints()
-        
-        ingredient = service.fetchIngredient()
     }
     
     required init?(coder: NSCoder) {
@@ -41,7 +37,10 @@ final class CollectionForTableCell: UITableViewCell {
             make.edges.equalTo(containerView)
         }
     }
+    
+    func update(_ ingredient: [Ingredient]) {
+        self.ingredient = ingredient
+    }
 }
-
 
 

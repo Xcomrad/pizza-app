@@ -1,11 +1,11 @@
 
 import UIKit
 
-class MenuView: UIView {
+final class MenuView: UIView {
     
     private var products: [Product] = []
     
-    private var tableView = MenuTableView()
+    var tableView = MenuTableView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

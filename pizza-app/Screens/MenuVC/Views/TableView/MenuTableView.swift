@@ -1,11 +1,13 @@
 
 import UIKit
 
-enum Section: Int, CaseIterable {
+private enum Section: Int, CaseIterable {
     case product
 }
 
-class MenuTableView: UITableView {
+final class MenuTableView: UITableView {
+    
+    var onShowSelectedProduct: (()->())?
     
     private var product: [Product] = []
     
@@ -38,9 +40,9 @@ class MenuTableView: UITableView {
 
 
 extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        onShowSelectedProduct?()
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

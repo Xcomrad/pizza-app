@@ -4,7 +4,7 @@ import UIKit
 final class MenuVC: UIViewController {
     
     private let productService = ProductService()
-    private var products: [Product] = []
+    private var product: [Product] = []
     
     private var menuView: MenuView { return self.view as! MenuView }
     
@@ -15,14 +15,25 @@ final class MenuVC: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Meню"
         fetchProducts()
-        
+        action()
+        setup()
     }
     
     func fetchProducts() {
-        products = productService.fetchProduct()
-        menuView.update(products)
+        product = productService.fetchProduct()
+        menuView.update(product)
+    }
+    
+    func action() {
+        menuView.tableView.onShowSelectedProduct = {
+            let controller = DetailVC()
+            self.present(controller, animated: true)
+        }
+    }
+    
+    private func setup() {
+        self.title = "Меню"
     }
 }
 

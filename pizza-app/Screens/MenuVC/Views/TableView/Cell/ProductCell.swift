@@ -33,29 +33,9 @@ final class ProductCell: UITableViewCell {
         return imageView
     }()
     
-    private var nameLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        return label
-    }()
-    
-    private var detailLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 13)
-        label.textColor = .systemGray
-        label.numberOfLines = .max
-        return label
-    }()
-    
-    private lazy var priceButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .systemOrange.withAlphaComponent(0.6)
-        button.layer.cornerRadius = 10
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
-        button.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        return button
-    }()
+    private var nameLabel = CreateLabel(style: .nameLabel, text: "")
+    private var detailLabel = CreateLabel(style: .detailLabel, text: "")
+    private var priceButton = CreateButton(style: .priceButton, text: "")
     
     private var bageLabel: UILabelPadding = {
         var label = UILabelPadding()

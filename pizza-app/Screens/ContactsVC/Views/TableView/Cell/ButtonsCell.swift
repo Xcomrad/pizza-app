@@ -24,47 +24,9 @@ final class ButtonsCell: UITableViewCell {
         return stackView
     }()
     
-    private var fbButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "fb"), for: .normal)
-        button.contentVerticalAlignment = .fill
-        button.contentHorizontalAlignment = .fill
-        button.layer.masksToBounds = true
-        button.clipsToBounds = true
-        button.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 45).isActive = true
-        button.layer.cornerRadius = 10
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    private var instButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "inst"), for: .normal)
-        button.contentVerticalAlignment = .fill
-        button.contentHorizontalAlignment = .fill
-        button.layer.masksToBounds = true
-        button.clipsToBounds = true
-        button.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 45).isActive = true
-        button.layer.cornerRadius = 10
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    private var youtubButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "you"), for: .normal)
-        button.contentVerticalAlignment = .fill
-        button.contentHorizontalAlignment = .fill
-        button.layer.masksToBounds = true
-        button.clipsToBounds = true
-        button.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 45).isActive = true
-        button.layer.cornerRadius = 10
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    private var fbButton = CreateButton(style: .imageButton, text: "fb")
+    private var instButton = CreateButton(style: .imageButton, text: "inst")
+    private var youtubButton = CreateButton(style: .imageButton, text: "you")
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

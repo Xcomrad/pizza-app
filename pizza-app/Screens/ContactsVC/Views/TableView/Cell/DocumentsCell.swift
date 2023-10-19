@@ -12,19 +12,8 @@ final class DocumentsCell: UITableViewCell {
         return stack
     }()
     
-    private var horizontalStack: UIStackView = {
-       let stack = UIStackView()
-        stack.axis = .horizontal
-        return stack
-    }()
-    
-    private var docLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Правовые документы"
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.textAlignment = .left
-        return label
-    }()
+    private var horizontalStack = CreateStack(style: .simpleHorizontalStack)
+    private var docLabel = CreateLabel(style: .largeDetail, text: "Правовые документы")
     
     private var docButton: UIButton = {
        let button = UIButton()

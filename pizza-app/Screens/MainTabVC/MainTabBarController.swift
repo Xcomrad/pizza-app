@@ -2,9 +2,9 @@
 import UIKit
 import SnapKit
 
-class MainTabBarController: UITabBarController {
+final class MainTabBarController: UITabBarController {
     
-    var menuVC: UINavigationController = {
+    private var menuVC: UINavigationController = {
         let controller = MenuVC()
         let image = UIImage(systemName: "menucard")
         let selectedImage = UIImage(systemName: "menucard.fill")
@@ -12,10 +12,12 @@ class MainTabBarController: UITabBarController {
         
         controller.tabBarItem = tabItem
         let navigationController = UINavigationController(rootViewController: controller)
+        navigationController.navigationBar.shadowImage = UIImage()
+        navigationController.navigationBar.barTintColor = .white
         return navigationController
     }()
     
-    var contactsVC: ContactsVC = {
+    private var contactsVC: ContactsVC = {
         let controller = ContactsVC()
         let image = UIImage(systemName: "phone")
         let selectedImage = UIImage(systemName: "phone.fill")
@@ -25,7 +27,7 @@ class MainTabBarController: UITabBarController {
         return controller
     }()
     
-    var cartVC: UINavigationController = {
+    private var cartVC: UINavigationController = {
         let controller = CartVC()
         let image = UIImage(systemName: "cart")
         let selectedImage = UIImage(systemName: "cart.fill")
@@ -33,6 +35,8 @@ class MainTabBarController: UITabBarController {
         
         controller.tabBarItem = tabItem
         let navigationController = UINavigationController(rootViewController: controller)
+        navigationController.navigationBar.shadowImage = UIImage()
+        navigationController.navigationBar.barTintColor = .white
         return navigationController
     }()
     
