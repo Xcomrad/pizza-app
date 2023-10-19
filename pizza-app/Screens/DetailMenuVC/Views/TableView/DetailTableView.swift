@@ -1,26 +1,26 @@
 
 import UIKit
 
-enum DetailSection: Int, CaseIterable {
+private enum DetailSection: Int, CaseIterable {
     case product
-    case pizzaSize
     case ingredient
 }
 
  final class DetailTableView: UITableView {
      
      private var product: [Product] = []
+     private var ingredient: [Ingredient] = []
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: .zero, style: .plain)
         self.allowsSelection = false
         self.separatorStyle = .none
+        self.showsVerticalScrollIndicator = false
         
         self.delegate = self
         self.dataSource = self
         
         self.register(ProductDetailCell.self, forCellReuseIdentifier: ProductDetailCell.reuseId)
-        self.register(DetailPizzaSize.self, forCellReuseIdentifier: DetailPizzaSize.reuseId)
         self.register(CollectionForTableCell.self, forCellReuseIdentifier: CollectionForTableCell.reuseId)
         
     }
@@ -29,8 +29,10 @@ enum DetailSection: Int, CaseIterable {
         fatalError("init(coder:) has not been implemented")
     }
      
-     func update(_ product: [Product]) {
+     func update(_ product: [Product], _ ingredient: [Ingredient]) {
          self.product = product
+         self.ingredient = ingredient
+         
      }
 }
 
@@ -48,7 +50,6 @@ extension DetailTableView: UITableViewDelegate, UITableViewDataSource {
         
         switch section {
         case .product: return 1
-        case .pizzaSize: return 1
         case .ingredient: return 1
         default: return 0
         }
@@ -63,10 +64,6 @@ extension DetailTableView: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: ProductDetailCell.reuseId, for: indexPath) as! ProductDetailCell
             let product = product[indexPath.row]
             cell.update(product)
-            return cell
-            
-        case .pizzaSize:
-            let cell = tableView.dequeueReusableCell(withIdentifier: DetailPizzaSize.reuseId , for: indexPath) as! DetailPizzaSize
             return cell
             
         case .ingredient:

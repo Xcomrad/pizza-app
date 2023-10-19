@@ -50,6 +50,11 @@ final class CategoryCollectionView: UITableViewCell {
 
 extension CategoryCollectionView: UICollectionViewDataSource, UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+      
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return category.count
     }

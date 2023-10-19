@@ -1,7 +1,7 @@
 
 import UIKit
 
-class CartPromoCell: UITableViewCell {
+final class CartPromoCell: UITableViewCell {
     
     static var reuseId = "CartPromoCell"
     
@@ -14,80 +14,19 @@ class CartPromoCell: UITableViewCell {
         return stackView
     }()
     
-    private var promoButton: UIButton = {
-       let button = UIButton()
-        button.setTitle("Ввести промокод", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
-        button.layer.cornerRadius = 10
-        button.backgroundColor = .systemOrange.withAlphaComponent(0.6)
-        button.setTitleColor(.brown, for: .normal)
-        button.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 30).isActive = true
-        return button
-    }()
+    private var promoButton = CreateButton(style: .largeButton, text: "Ввести промокод")
     
-    private var upperHorizontalStack: UIStackView = {
-       let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.distribution = .equalSpacing
-        return stackView
-    }()
+    private var upperHorizontalStack = CreateStack(style: .simpleHorizontalStack)
+    private var itemCount = CreateLabel(style: .nameLabel, text: "1")
+    private var priceCount = CreateLabel(style: .nameLabel, text: "20 руб.")
     
-    private var itemCount: UILabel = {
-        let label = UILabel()
-        label.text = "1 товар"
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        return label
-    }()
+    private var middleHorizontalStack = CreateStack(style: .simpleHorizontalStack)
+    private var coinLabel = CreateLabel(style: .nameLabel, text: "Начислим бонусов")
+    private var coinCount = CreateLabel(style: .nameLabel, text: "219")
     
-    private var priceCount: UILabel = {
-        let label = UILabel()
-        label.text = "20 руб."
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        return label
-    }()
-    
-    private var middleHorizontalStack: UIStackView = {
-       let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.distribution = .equalSpacing
-        return stackView
-    }()
-    
-    private var coinLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Начислим бонусов"
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        return label
-    }()
-    
-    private var coinCount: UILabel = {
-        let label = UILabel()
-        label.text = "219"
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        return label
-    }()
-    
-    private var lowerHorizontalStack: UIStackView = {
-       let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.distribution = .equalSpacing
-        return stackView
-    }()
-    
-    private var deliverylabel: UILabel = {
-        let label = UILabel()
-        label.text = "Доставка"
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        return label
-    }()
-    
-    private var finalDelivery: UILabel = {
-        let label = UILabel()
-        label.text = "Бесплатно"
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        return label
-    }()
+    private var lowerHorizontalStack = CreateStack(style: .simpleHorizontalStack)
+    private var deliverylabel = CreateLabel(style: .nameLabel, text: "Доставка")
+    private var finalDelivery = CreateLabel(style: .nameLabel, text: "Бесплатно")
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -98,8 +37,13 @@ class CartPromoCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+
+
+extension CartPromoCell {
     
-    func setupViews() {
+    private func setupViews() {
         contentView.addSubview(verticalStack)
         verticalStack.addArrangedSubview(promoButton)
         
@@ -117,7 +61,7 @@ class CartPromoCell: UITableViewCell {
         
     }
     
-    func setupConstraints() {
+   private  func setupConstraints() {
         verticalStack.snp.makeConstraints { make in
             make.edges.equalTo(contentView)
         }

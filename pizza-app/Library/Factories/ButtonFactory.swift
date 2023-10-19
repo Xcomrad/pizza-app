@@ -1,21 +1,22 @@
 
 import UIKit
 
+
 enum ButtonStyle: Int {
     case priceButton
     case imageButton
     case largeButton
 }
 
-class Buttons: UIButton {
+class CreateButton: UIButton {
     
     init(style: ButtonStyle, text: String) {
         super.init(frame: .zero)
         
         switch style {
-        case .priceButton: priceButton(text: text)
-        case .imageButton: imageButton(text: text)
-        case .largeButton: createLargeButton(text: text)
+        case .priceButton: self.createPriceButton(text: text)
+        case .imageButton: self.createImageButton(text: text)
+        case .largeButton: self.createLargeButton(text: text)
         }
     }
     
@@ -23,16 +24,17 @@ class Buttons: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func priceButton(text: String) {
+    func createPriceButton(text: String) {
         self.setTitle(text, for: .normal)
-        self.backgroundColor = .systemOrange.withAlphaComponent(0.6)
+        self.setTitleColor(.systemGray, for: .normal)
+        self.backgroundColor = .systemGray6
         self.layer.cornerRadius = 10
         self.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         self.heightAnchor.constraint(equalToConstant: 30).isActive = true
         self.widthAnchor.constraint(equalToConstant: 80).isActive = true
     }
     
-    func imageButton(text: String) {
+    func createImageButton(text: String) {
         self.setImage(UIImage(named: text), for: .normal)
         self.contentVerticalAlignment = .fill
         self.contentHorizontalAlignment = .fill
@@ -46,11 +48,12 @@ class Buttons: UIButton {
     
     func createLargeButton(text: String) {
         self.setTitle(text, for: .normal)
-        self.setTitleColor(.white, for: .normal)
-        self.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        self.backgroundColor = .orange.withAlphaComponent(0.7)
-        self.layer.cornerRadius = 25
-        self.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        self.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        self.layer.cornerRadius = 10
+        self.backgroundColor = .systemOrange.withAlphaComponent(0.6)
+        self.setTitleColor(.brown, for: .normal)
+        self.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        self.widthAnchor.constraint(equalToConstant: 50).isActive = true
     }
 }
 

@@ -5,32 +5,38 @@ final class ProductDetailCell: UITableViewCell {
     
     static var reuseId = "ProductDetailCell"
     
+    private var imageArray:[UIImage?] = [UIImage(named: "big"),
+                                         UIImage(named: "middle"),
+                                         UIImage(named: "small")]
+    
     private var container: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
-        stack.distribution = .equalSpacing
+        stack.spacing = 10
         return stack
     }()
     
     private var detailImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        return imageView
+        let image = UIImageView()
+        image.image = UIImage(named: "middle")
+        image.contentMode = .scaleAspectFit
+        image.heightAnchor.constraint(equalToConstant: 250).isActive = true
+        image.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        return image
     }()
     
-    private var namelabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 20)
-        return label
-    }()
+    private var namelabel = CreateLabel(style: .largeLabel, text: "")
+    private var detailLabel = CreateLabel(style: .detailLabel, text: "")
     
-    private var detailLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 17)
-        label.textColor = .systemGray4
-        return label
+    lazy var segmentControll: UISegmentedControl = {
+        var controllItem = ["Большая", "Средняя", "Маленькая"]
+        var controll = UISegmentedControl(items: controllItem)
+        
+        controll.selectedSegmentIndex = 1
+        controll.selectedSegmentTintColor = .systemOrange.withAlphaComponent(0.6)
+        controll.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        controll.addTarget(self, action: #selector(nextPizza(target:)), for: .valueChanged)
+        return controll
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -53,11 +59,12 @@ extension ProductDetailCell {
         container.addArrangedSubview(detailImageView)
         container.addArrangedSubview(namelabel)
         container.addArrangedSubview(detailLabel)
+        container.addArrangedSubview(segmentControll)
     }
     
     private func setupConstraints() {
         container.snp.makeConstraints { make in
-            make.edges.equalTo(contentView)
+            make.edges.equalTo(contentView).inset(10)
         }
     }
     
@@ -65,5 +72,12 @@ extension ProductDetailCell {
         detailImageView.image = UIImage(named: "\(product.image)")
         namelabel.text = product.name
         detailLabel.text = product.detail
+    }
+    
+    @objc func nextPizza(target: UISegmentedControl) {
+        if target == self.segmentControll {
+            let segmentIndex = target.selectedSegmentIndex
+            self.detailImageView.image = self.imageArray[segmentIndex]
+        }
     }
 }

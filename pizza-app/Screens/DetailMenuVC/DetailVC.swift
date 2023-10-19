@@ -1,12 +1,12 @@
 
 import UIKit
+
+final class DetailVC: UIViewController {
     
-class DetailVC: UIViewController {
-    
-    private let productService = ProductService()
-    private var products: [Product] = []
-    
-    private let ingredientService = IngredientService()
+    private var productService = ProductService()
+    private var product: [Product] = []
+
+    private var ingredientService = IngredientService()
     private var ingredient: [Ingredient] = []
     
     private var detailView: DetailView { return self.view as! DetailView }
@@ -18,12 +18,13 @@ class DetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      fetchProducts()
+        fetchProducts()
     }
     
     func fetchProducts() {
-        products = productService.fetchProduct()
-        detailView.update(products, ingredient)
+        product = productService.fetchProduct()
+        ingredient = ingredientService.fetchIngredient()
+        detailView.update(product, ingredient)
     }
 }
 

@@ -19,7 +19,7 @@ final class HeaderTableComponent: UIView {
     private lazy var segmentControll: UISegmentedControl = {
         let segmentArray = ["В пиццерии", "На доставку"]
         let controll = UISegmentedControl(items: segmentArray)
-   
+        
         controll.selectedSegmentIndex = 0
         controll.selectedSegmentTintColor = .systemOrange.withAlphaComponent(0.6)
         controll.heightAnchor.constraint(equalToConstant: 40).isActive = true
@@ -27,16 +27,16 @@ final class HeaderTableComponent: UIView {
         return controll
     }()
     
-   private var separator: UIView = {
-       let separator = UIView()
+    private var separator: UIView = {
+        let separator = UIView()
         separator.backgroundColor = .systemGray5
         separator.heightAnchor.constraint(equalToConstant: 1).isActive = true
-       separator.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        separator.widthAnchor.constraint(equalToConstant: 300).isActive = true
         return separator
     }()
     
     private lazy var addressButton: UIButton = {
-       let button = UIButton()
+        let button = UIButton()
         button.setTitle("Указать адрес доставки >", for: .normal)
         button.setTitleColor(.systemOrange, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)

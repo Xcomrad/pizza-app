@@ -1,7 +1,7 @@
 
 import UIKit
 
-class ContactsView: UIView {
+final class ContactsView: UIView {
     
     private var tableView = ContactsTableView()
     

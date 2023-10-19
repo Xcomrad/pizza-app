@@ -1,15 +1,15 @@
 
 import UIKit
 
-enum SetupViews: Int, CaseIterable {
+private enum SetupViews: Int, CaseIterable {
     case call
     case buttons
     case documents
 }
 
-class ContactsTableView: UITableView {
+final class ContactsTableView: UITableView {
     
-    let header = MapHeaderView.init(frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 350))
+    private let header = MapHeaderView.init(frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 350))
     
     init() {
         super.init(frame: .zero, style: .plain)

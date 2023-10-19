@@ -13,22 +13,16 @@ final class CallCell: UITableViewCell {
         return stack
     }()
     
-    private var callLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Связаться с поддержкой"
-        label.font = UIFont.boldSystemFont(ofSize: 17)
-        label.textAlignment = .left
-        return label
-    }()
+    private var callLabel = CreateLabel(style: .largeLabel, text: "Связаться с поддержкой")
     
     private var callButton: UIButton = {
         let button = UIButton()
         button.setTitle("Позвонить", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        button.backgroundColor = .orange.withAlphaComponent(0.7)
-        button.layer.cornerRadius = 25
-        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        button.backgroundColor = .systemOrange
+        button.layer.cornerRadius = 15
+        button.heightAnchor.constraint(equalToConstant: 45).isActive = true
         return button
     }()
     

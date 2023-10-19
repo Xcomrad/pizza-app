@@ -1,7 +1,7 @@
 
 import UIKit
 
-class CartVC: UIViewController {
+final class CartVC: UIViewController {
     
     private var cartView: CartView { return self.view as! CartView }
     

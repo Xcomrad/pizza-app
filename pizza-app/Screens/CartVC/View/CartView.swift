@@ -16,11 +16,11 @@ final class CartView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupViews() {
+   private func setupViews() {
         addSubview(tableView)
     }
     
-    func setupConstraints() {
+    private func setupConstraints() {
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(self.safeAreaLayoutGuide)
         }
