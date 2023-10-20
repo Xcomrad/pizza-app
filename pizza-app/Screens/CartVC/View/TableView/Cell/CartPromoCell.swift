@@ -3,10 +3,10 @@ import UIKit
 
 final class CartPromoCell: UITableViewCell {
     
-    static var reuseId = "CartPromoCell"
+    static let reuseId = "CartPromoCell"
     
-    private var verticalStack: UIStackView = {
-       let stackView = UIStackView()
+    private let verticalStack: UIStackView = {
+        let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 10
         stackView.directionalLayoutMargins = .init(top: 20, leading: 10, bottom: 20, trailing: 10)
@@ -14,19 +14,19 @@ final class CartPromoCell: UITableViewCell {
         return stackView
     }()
     
-    private var promoButton = CreateButton(style: .largeButton, text: "Ввести промокод")
+    private let promoButton = CreateButton(style: .largeButton, text: "Ввести промокод")
     
-    private var upperHorizontalStack = CreateStack(style: .simpleHorizontalStack)
-    private var itemCount = CreateLabel(style: .nameLabel, text: "1")
-    private var priceCount = CreateLabel(style: .nameLabel, text: "20 руб.")
+    private let upperHorizontalStack = CreateStack(style: .simpleHorizontalStack)
+    private let itemCount = CreateLabel(style: .nameLabel, text: "Вкусняшек на сумму")
+    private lazy var priceCount = CreateLabel(style: .nameLabel, text: "" )
     
-    private var middleHorizontalStack = CreateStack(style: .simpleHorizontalStack)
-    private var coinLabel = CreateLabel(style: .nameLabel, text: "Начислим бонусов")
-    private var coinCount = CreateLabel(style: .nameLabel, text: "219")
+    private let middleHorizontalStack = CreateStack(style: .simpleHorizontalStack)
+    private let coinLabel = CreateLabel(style: .nameLabel, text: "Начислим бонусов")
+    private lazy var coinCount = CreateLabel(style: .nameLabel, text: "" )
     
-    private var lowerHorizontalStack = CreateStack(style: .simpleHorizontalStack)
-    private var deliverylabel = CreateLabel(style: .nameLabel, text: "Доставка")
-    private var finalDelivery = CreateLabel(style: .nameLabel, text: "Бесплатно")
+    private let lowerHorizontalStack = CreateStack(style: .simpleHorizontalStack)
+    private let deliverylabel = CreateLabel(style: .nameLabel, text: "Доставка")
+    private let finalDelivery = CreateLabel(style: .nameLabel, text: "Бесплатно")
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -58,12 +58,16 @@ extension CartPromoCell {
         verticalStack.addArrangedSubview(lowerHorizontalStack)
         lowerHorizontalStack.addArrangedSubview(deliverylabel)
         lowerHorizontalStack.addArrangedSubview(finalDelivery)
-        
     }
     
-   private  func setupConstraints() {
+    private  func setupConstraints() {
         verticalStack.snp.makeConstraints { make in
             make.edges.equalTo(contentView)
         }
+    }
+    
+    func update(_ price: Int, _ coin: Int) {
+        priceCount.text = "\(price) руб."
+        coinCount.text = "+\(coin)"
     }
 }

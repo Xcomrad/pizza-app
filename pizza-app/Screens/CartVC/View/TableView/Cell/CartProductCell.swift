@@ -3,64 +3,53 @@ import UIKit
 
 final class CartProductCell: UITableViewCell {
     
-    private var stepper = Stepper()
+    let stepper = Stepper()
     
-    static var reuseId = "CartProductCell"
+    static let reuseId = "CartProductCell"
     
-    private var verticalStackView: UIStackView = {
+    private let rootVerticalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 10
+        stackView.spacing = 5
         stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
     
-    private var upperHrizontalStack: UIStackView = {
+    private let upperHrizontalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.spacing = 10
         return stackView
     }()
     
-    private var middleVerticalStack: UIStackView = {
-       let stackView = UIStackView()
+    private let middleVerticalStackView: UIStackView = {
+        let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         return stackView
     }()
     
-    private var lowerHrizontalStack: UIStackView = {
+    private let lowerHrizontalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .equalSpacing
-        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20)
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
     
-    private var productImageView: UIImageView = {
+    private let productImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "1")
         imageView.contentMode = .scaleAspectFill
         imageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         imageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
         return imageView
     }()
     
-    private var nameLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Карри-пицца"
-        label.font = UIFont.boldSystemFont(ofSize: 20)
-        return label
-    }()
-    
-    private var priceLabel: UILabel = {
-       let label = UILabel()
-        label.text = "20 руб."
-        label.font = UIFont.boldSystemFont(ofSize: 17)
-        return label
-    }()
+    private let nameLabel = CreateLabel(style: .largeLabel, text: "")
+    private let detailLabel = CreateLabel(style: .detailLabel, text: "")
+    private let priceLabel = CreateLabel(style: .largeLabel, text: "")
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -78,22 +67,34 @@ final class CartProductCell: UITableViewCell {
 extension CartProductCell {
     
     private func setupViews() {
-        contentView.addSubview(verticalStackView)
+        contentView.addSubview(rootVerticalStackView)
         
-        verticalStackView.addArrangedSubview(upperHrizontalStack)
-        upperHrizontalStack.addArrangedSubview(productImageView)
+        rootVerticalStackView.addArrangedSubview(upperHrizontalStackView)
+        upperHrizontalStackView.addArrangedSubview(productImageView)
         
-        upperHrizontalStack.addArrangedSubview(middleVerticalStack)
-        middleVerticalStack.addArrangedSubview(nameLabel)
+        upperHrizontalStackView.addArrangedSubview(middleVerticalStackView)
+        middleVerticalStackView.addArrangedSubview(nameLabel)
+        middleVerticalStackView.addArrangedSubview(detailLabel)
         
-        verticalStackView.addArrangedSubview(lowerHrizontalStack)
-        lowerHrizontalStack.addArrangedSubview(priceLabel)
-        lowerHrizontalStack.addArrangedSubview(stepper)
-     }
-     
-     private func setupConstraints() {
-         verticalStackView.snp.makeConstraints { make in
-             make.edges.equalTo(contentView)
-         }
-     }
+        rootVerticalStackView.addArrangedSubview(lowerHrizontalStackView)
+        lowerHrizontalStackView.addArrangedSubview(priceLabel)
+        lowerHrizontalStackView.addArrangedSubview(stepper)
+    }
+    
+    private func setupConstraints() {
+        rootVerticalStackView.snp.makeConstraints { make in
+            make.edges.equalTo(contentView)
+        }
+    }
+    
+    func update(product: Product, index: Int) {
+        productImageView.image = UIImage(named: product.image)
+        nameLabel.text = "\(product.name)"
+        detailLabel.text = "\(product.detail!)"
+        priceLabel.text = "\(product.price) руб."
+        
+        stepper.countValue = product.count
+        
+        stepper.index = index
+    }
 }

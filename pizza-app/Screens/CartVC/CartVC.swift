@@ -12,6 +12,15 @@ final class CartVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
+    }
+    
+    func setup() {
         self.title = "Корзина"
+        
+    }
+    
+    func update() {
+
     }
 }

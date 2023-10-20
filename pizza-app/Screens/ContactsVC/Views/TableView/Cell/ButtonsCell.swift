@@ -7,20 +7,17 @@ final class ButtonsCell: UITableViewCell {
     
     private var container: UIStackView = {
         let stack = UIStackView()
-        stack.directionalLayoutMargins = .init(top: 10, leading: 0, bottom: 10, trailing: 0)
-        stack.isLayoutMarginsRelativeArrangement = true
-        stack.heightAnchor.constraint(equalToConstant: 90).isActive = true
+        stack.heightAnchor.constraint(equalToConstant: 50).isActive = true
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     
     private var horizontalStack: UIStackView = {
         var stackView = UIStackView.init()
-        stackView.spacing = 30
         stackView.distribution = .equalSpacing
         stackView.axis = .horizontal
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets (top: 0, leading: 60, bottom: 0, trailing: 60)
         stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets (top: 0, leading: 50, bottom: 0, trailing: 50)
         return stackView
     }()
     
@@ -58,7 +55,7 @@ extension ButtonsCell {
             make.edges.equalTo(contentView)
         }
         horizontalStack.snp.makeConstraints { make in
-            make.edges.equalTo(container).inset(20)
+            make.top.equalTo(container).inset(10)
         }
     }
 }
