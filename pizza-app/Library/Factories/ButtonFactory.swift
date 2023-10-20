@@ -6,6 +6,7 @@ enum ButtonStyle: Int {
     case priceButton
     case imageButton
     case largeButton
+    case buyButton
 }
 
 class CreateButton: UIButton {
@@ -17,6 +18,7 @@ class CreateButton: UIButton {
         case .priceButton: self.createPriceButton(text: text)
         case .imageButton: self.createImageButton(text: text)
         case .largeButton: self.createLargeButton(text: text)
+        case .buyButton:   self.createBuyButton(text: text)
         }
     }
     
@@ -53,7 +55,15 @@ class CreateButton: UIButton {
         self.backgroundColor = .systemOrange.withAlphaComponent(0.6)
         self.setTitleColor(.brown, for: .normal)
         self.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        self.widthAnchor.constraint(equalToConstant: 50).isActive = true
+    }
+    
+    func createBuyButton(text: String) {
+        self.setTitle(text, for: .normal)
+        self.setTitleColor(.white, for: .normal)
+        self.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        self.backgroundColor = .systemOrange
+        self.layer.cornerRadius = 15
+        self.heightAnchor.constraint(equalToConstant: 45).isActive = true
     }
 }
 

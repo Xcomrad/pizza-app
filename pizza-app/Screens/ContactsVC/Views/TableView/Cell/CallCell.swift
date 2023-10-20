@@ -3,9 +3,9 @@ import UIKit
 
 final class CallCell: UITableViewCell {
     
-    static var reuseId = "CallView"
+    static let reuseId = "CallView"
     
-    private var container: UIStackView = {
+    private let container: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.heightAnchor.constraint(equalToConstant: 100).isActive = true
@@ -13,18 +13,8 @@ final class CallCell: UITableViewCell {
         return stack
     }()
     
-    private var callLabel = CreateLabel(style: .largeLabel, text: "Связаться с поддержкой")
-    
-    private var callButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Позвонить", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        button.backgroundColor = .systemOrange
-        button.layer.cornerRadius = 15
-        button.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        return button
-    }()
+    private let callLabel = CreateLabel(style: .largeLabel, text: "Связаться с поддержкой")
+    private let callButton = CreateButton(style: .buyButton, text: "Позвонить")
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

@@ -27,6 +27,8 @@
 		266D51632ACB026D00CAF1AD /* BannerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266D51622ACB026D00CAF1AD /* BannerService.swift */; };
 		266D51662ACB02B000CAF1AD /* BannerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266D51652ACB02B000CAF1AD /* BannerCollectionView.swift */; };
 		266D51692ACB02CD00CAF1AD /* BannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266D51682ACB02CD00CAF1AD /* BannerCell.swift */; };
+		267B65EF2AE2B68300BD5211 /* CartTotalPriceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267B65EE2AE2B68300BD5211 /* CartTotalPriceCell.swift */; };
+		267B65F12AE2CE5300BD5211 /* BuyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267B65F02AE2CE5300BD5211 /* BuyButtonView.swift */; };
 		2696C94C2AD5702300C9164D /* CallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2696C94B2AD5702300C9164D /* CallCell.swift */; };
 		26998F482ACAC9CC00946CA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26998F472ACAC9CC00946CA5 /* AppDelegate.swift */; };
 		26998F4A2ACAC9CC00946CA5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26998F492ACAC9CC00946CA5 /* SceneDelegate.swift */; };
@@ -80,6 +82,8 @@
 		266D51622ACB026D00CAF1AD /* BannerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerService.swift; sourceTree = "<group>"; };
 		266D51652ACB02B000CAF1AD /* BannerCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionView.swift; sourceTree = "<group>"; };
 		266D51682ACB02CD00CAF1AD /* BannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCell.swift; sourceTree = "<group>"; };
+		267B65EE2AE2B68300BD5211 /* CartTotalPriceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTotalPriceCell.swift; sourceTree = "<group>"; };
+		267B65F02AE2CE5300BD5211 /* BuyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyButtonView.swift; sourceTree = "<group>"; };
 		2696C94B2AD5702300C9164D /* CallCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallCell.swift; sourceTree = "<group>"; };
 		26998F442ACAC9CC00946CA5 /* pizza-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pizza-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26998F472ACAC9CC00946CA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +136,7 @@
 		260773DC2AD82F88004E6E27 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				267B65EE2AE2B68300BD5211 /* CartTotalPriceCell.swift */,
 				260773D82AD82E61004E6E27 /* CartProductCell.swift */,
 				260773DA2AD82F1F004E6E27 /* CartPromoCell.swift */,
 			);
@@ -142,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				260773D42AD82C58004E6E27 /* CartView.swift */,
+				267B65F02AE2CE5300BD5211 /* BuyButtonView.swift */,
 				260773DE2AD82FA9004E6E27 /* TableView */,
 			);
 			path = View;
@@ -326,7 +332,7 @@
 		26998F5D2ACAC9F200946CA5 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				26E728DF2ACEE9E0007FFDE6 /* MainTabVC */,
+				26E728DF2ACEE9E0007FFDE6 /* MainTabBar */,
 				266D51462ACACF8C00CAF1AD /* MenuVC */,
 				266D514E2ACAD0C300CAF1AD /* DetailMenuVC */,
 				266D51472ACACF9A00CAF1AD /* ContactsVC */,
@@ -335,12 +341,12 @@
 			path = Screens;
 			sourceTree = "<group>";
 		};
-		26E728DF2ACEE9E0007FFDE6 /* MainTabVC */ = {
+		26E728DF2ACEE9E0007FFDE6 /* MainTabBar */ = {
 			isa = PBXGroup;
 			children = (
 				26E728E02ACEEA16007FFDE6 /* MainTabBarController.swift */,
 			);
-			path = MainTabVC;
+			path = MainTabBar;
 			sourceTree = "<group>";
 		};
 		26F9A1B92AD6B88D0079CCC5 /* TableView */ = {
@@ -539,6 +545,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				260773D92AD82E61004E6E27 /* CartProductCell.swift in Sources */,
+				267B65F12AE2CE5300BD5211 /* BuyButtonView.swift in Sources */,
 				266D51632ACB026D00CAF1AD /* BannerService.swift in Sources */,
 				26F9A1CC2AD6DFE80079CCC5 /* DetailView.swift in Sources */,
 				26DB40762AD95F1B0078A246 /* OrderService.swift in Sources */,
@@ -558,6 +565,7 @@
 				26ADA5B52AD3F38F00120E1C /* CollectionForTableCell.swift in Sources */,
 				260773D52AD82C58004E6E27 /* CartView.swift in Sources */,
 				26998F482ACAC9CC00946CA5 /* AppDelegate.swift in Sources */,
+				267B65EF2AE2B68300BD5211 /* CartTotalPriceCell.swift in Sources */,
 				26998F4A2ACAC9CC00946CA5 /* SceneDelegate.swift in Sources */,
 				26308E9B2ACC76D100267B66 /* UIShadow.swift in Sources */,
 				26E728E12ACEEA16007FFDE6 /* MainTabBarController.swift in Sources */,

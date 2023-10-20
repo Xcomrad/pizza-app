@@ -1,9 +1,10 @@
 
 import Foundation
 
-struct Product {
+class Product {
+    
     var index: Int
-    var coin: Int?
+    var coin: Int
     var image: String
     var name: String
     var detail: String?
@@ -11,4 +12,16 @@ struct Product {
     var price: Int
     var count: Int
     var isNew: Bool?
+    
+    internal init(index: Int, coin: Int, image: String, name: String, detail: String? = nil, size: String? = nil, price: Int, count: Int, isNew: Bool? = nil) {
+        self.index = index
+        self.coin = coin
+        self.image = image
+        self.name = name
+        self.detail = detail
+        self.size = size
+        self.price = price
+        self.count = count
+        self.isNew = isNew
+    }
 }

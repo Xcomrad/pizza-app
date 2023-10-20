@@ -3,15 +3,15 @@ import UIKit
 
 final class Stepper: UIControl {
     
-    ///Устанавливается значение ConterView
-    var countValue = 0 {
+    ///Устанавливается значение 
+    var countValue = 1 {
         didSet {
             countValue = countValue > 0 ? countValue : 0
             countLabel.text = "\(countValue)"
         }
     }
     
-    ///Индекс ячейки
+    ///Индекс ячейки продукта
     var index: Int = 0
     
     private let containerStack: UIStackView = {
@@ -19,6 +19,10 @@ final class Stepper: UIControl {
         
         stack.axis = .horizontal
         stack.distribution = .equalSpacing
+        stack.layer.cornerRadius = 10
+        stack.backgroundColor = .systemGray6
+        stack.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        stack.heightAnchor.constraint(equalToConstant: 30).isActive = true
        
         return stack
     }()
@@ -38,7 +42,6 @@ final class Stepper: UIControl {
         button.layer.cornerRadius = 12
         
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        
         return button
     }()
 
@@ -49,14 +52,11 @@ final class Stepper: UIControl {
         button.layer.cornerRadius = 12
         
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-            
         return button
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        setup()
         setupViews()
         setupConstraints()
     }
@@ -64,14 +64,11 @@ final class Stepper: UIControl {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private func setup() {
-        self.layer.cornerRadius = 12
-        self.backgroundColor = UIColor(red: 243/255, green: 243/255, blue: 247/255, alpha: 1)
-        
-        self.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        self.heightAnchor.constraint(equalToConstant: 30).isActive = true
-    }
+}
+
+
+
+extension Stepper {
     
     private func setupViews() {
         self.addSubview(containerStack)
@@ -87,14 +84,13 @@ final class Stepper: UIControl {
         }
     }
     
+    
     @objc private func buttonAction(_ sender: UIButton) {
+        
         switch sender {
-        case decreaseButton:
-            countValue -= 1
-        case increaseButton:
-            countValue += 1
-        default:
-            break
+        case decreaseButton: countValue -= 1
+        case increaseButton: countValue += 1
+        default: break
         }
         sendActions(for: .valueChanged)
     }
