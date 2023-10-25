@@ -1,9 +1,9 @@
 
 import UIKit
 
-class BuyButtonView: UIView {
+final class DetailBuyButtonView: UIView {
     
-    let buyButton = CreateButton(style: .buyButton, text: "" )
+    private let buyButton = CreateButton(style: .buyButton, text: "В корзину")
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -18,19 +18,16 @@ class BuyButtonView: UIView {
 
 
 
-extension BuyButtonView {
+extension DetailBuyButtonView {
     
-    func setupViews() {
+    private func setupViews() {
+        self.backgroundColor = .white
         self.addSubview(buyButton)
     }
     
-    func setupConstraints() {
+    private func setupConstraints() {
         buyButton.snp.makeConstraints { make in
             make.edges.equalTo(self).inset(20)
         }
-    }
-    
-    func update(_ price: Int) {
-        buyButton.setTitle("Оформить заказ на \(price) руб.", for: .normal)
     }
 }

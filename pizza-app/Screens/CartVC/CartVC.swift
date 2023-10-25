@@ -13,14 +13,24 @@ final class CartVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-    }
+        showMenu()
     
-    func setup() {
-        self.title = "Корзина"
-        
     }
-    
-    func update() {
+}
 
+
+
+extension CartVC {
+    
+    private func setup() {
+        self.title = "Корзина"
+    }
+    
+    private func showMenu() {
+        // переход в Menu
+        cartView.emptyView.onEnterMenuVC = {
+            self.tabBarController?.selectedIndex = 0
+            
+        }
     }
 }

@@ -25,8 +25,8 @@ final class ProductDetailCell: UITableViewCell {
         return image
     }()
     
-    private var namelabel = CreateLabel(style: .largeLabel, text: "")
-    private var detailLabel = CreateLabel(style: .detailLabel, text: "")
+    private var namelabel = CreateLabel(style: .largeLabel, text: "", alignment: .left)
+    private var detailLabel = CreateLabel(style: .detailLabel, text: "", alignment: .left)
     
     lazy var segmentControll: UISegmentedControl = {
         var controllItem = ["Большая", "Средняя", "Маленькая"]
@@ -68,12 +68,14 @@ extension ProductDetailCell {
         }
     }
     
+    // MARK: - Public
     func update(_ product: Product) {
         detailImageView.image = UIImage(named: "\(product.image)")
         namelabel.text = product.name
         detailLabel.text = product.detail
     }
     
+    // MARK: - Action
     @objc func nextPizza(target: UISegmentedControl) {
         if target == self.segmentControll {
             let segmentIndex = target.selectedSegmentIndex

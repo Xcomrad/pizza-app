@@ -9,7 +9,6 @@ private enum DetailSection: Int, CaseIterable {
  final class DetailTableView: UITableView {
      
      private var product: [Product] = []
-     private var ingredient: [Ingredient] = []
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: .zero, style: .plain)
@@ -21,7 +20,7 @@ private enum DetailSection: Int, CaseIterable {
         self.dataSource = self
         
         self.register(ProductDetailCell.self, forCellReuseIdentifier: ProductDetailCell.reuseId)
-        self.register(CollectionForTableCell.self, forCellReuseIdentifier: CollectionForTableCell.reuseId)
+        self.register(DetailCollectionView.self, forCellReuseIdentifier: DetailCollectionView.reuseId)
         
     }
     
@@ -29,10 +28,9 @@ private enum DetailSection: Int, CaseIterable {
         fatalError("init(coder:) has not been implemented")
     }
      
-     func update(_ product: [Product], _ ingredient: [Ingredient]) {
+     // MARK: - Public
+     func update(_ product: [Product]) {
          self.product = product
-         self.ingredient = ingredient
-         
      }
 }
 
@@ -67,7 +65,7 @@ extension DetailTableView: UITableViewDelegate, UITableViewDataSource {
             return cell
             
         case .ingredient:
-            let cell = tableView.dequeueReusableCell(withIdentifier: CollectionForTableCell.reuseId, for: indexPath) as! CollectionForTableCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: DetailCollectionView.reuseId, for: indexPath) as! DetailCollectionView
             return cell
             
         default:

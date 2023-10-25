@@ -1,15 +1,21 @@
 
 import UIKit
 
-final class DetailCollectionView: UICollectionView {
+final class DetailCollectionView: UITableViewCell {
     
-    private let service = IngredientService()
+    static var reuseId = "DetailCollectionView"
+    
+    private var service = IngredientService()
     private var ingredient: [Ingredient] = []
     
-    init() {
+    private var containerStack: UIStackView = {
+        let stack = UIStackView()
+        stack.heightAnchor.constraint(equalToConstant: 1450).isActive = true
+        return stack
+    }()
+    
+    private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        super.init(frame: .zero, collectionViewLayout: layout)
-        
         let itemsCount: CGFloat = 3
         let padding: CGFloat = 10
         let paddingCount: CGFloat = itemsCount + 1
@@ -30,10 +36,24 @@ final class DetailCollectionView: UICollectionView {
         collectionView.dataSource = self
         
         collectionView.register(IngredientDetailCell.self, forCellWithReuseIdentifier: IngredientDetailCell.reuseId)
-    }
+        return collectionView
+    }()
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupViews()
+        setupConstraints()
+        
+        fetchIngredient()
+    }
+    
+    //MARK: - Public
+    func fetchIngredient() {
+        ingredient = service.fetchIngredient()
     }
 }
 
@@ -55,5 +75,24 @@ extension DetailCollectionView: UICollectionViewDataSource, UICollectionViewDele
         let ingredient = ingredient[indexPath.row]
         cell.update(ingredient)
         return cell
+    }
+}
+
+
+
+extension DetailCollectionView {
+    
+    private func setupViews() {
+        contentView.addSubview(containerStack)
+        containerStack.addSubview(collectionView)
+    }
+    
+    private func setupConstraints() {
+        containerStack.snp.makeConstraints { make in
+            make.edges.equalTo(contentView)
+        }
+        collectionView.snp.makeConstraints { make in
+            make.edges.equalTo(containerStack)
+        }
     }
 }

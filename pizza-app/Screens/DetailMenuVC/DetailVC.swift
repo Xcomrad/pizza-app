@@ -5,9 +5,6 @@ final class DetailVC: UIViewController {
     
     private var productService = ProductService()
     private var product: [Product] = []
-
-    private var ingredientService = IngredientService()
-    private var ingredient: [Ingredient] = []
     
     private var detailView: DetailView { return self.view as! DetailView }
     
@@ -19,12 +16,19 @@ final class DetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchProducts()
+        dismissDetail()
     }
     
+    // MARK: - Public
     func fetchProducts() {
         product = productService.fetchProduct()
-        ingredient = ingredientService.fetchIngredient()
-        detailView.update(product, ingredient)
+        detailView.update(product)
+    }
+    
+    func dismissDetail() {
+        detailView.dismissButton.onCloseDetail = {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 }
 

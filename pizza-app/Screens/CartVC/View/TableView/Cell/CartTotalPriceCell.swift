@@ -11,7 +11,7 @@ final class CartTotalPriceCell: UITableViewCell {
         return stack
     }()
     
-    private lazy var priceLabel = CreateLabel(style: .largeLabel, text: "" )
+    private lazy var priceLabel = CreateLabel(style: .largeLabel, text: "", alignment: .left )
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -43,13 +43,13 @@ extension CartTotalPriceCell {
         }
     }
     
-    /// Передача данных во View
+    // MARK: - Public
     func update(_ count: Int, _ price: Int) {
         priceLabel.text = "\(count) товара на сумму \(price) руб."
         
         if count == 1 {
             priceLabel.text = "\(count) товар на сумму \(price) руб."
-        } else if count > 1  {
+        } else if count < 5  {
             priceLabel.text = "\(count) товара на сумму \(price) руб."
         } else if count >= 5 {
             priceLabel.text = "\(count) товаров на сумму \(price) руб."

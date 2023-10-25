@@ -17,14 +17,17 @@ final class MainTabBarController: UITabBarController {
         return navigationController
     }()
     
-    private var contactsVC: ContactsVC = {
+    private var contactsVC: UINavigationController = {
         let controller = ContactsVC()
         let image = UIImage(systemName: "phone")
         let selectedImage = UIImage(systemName: "phone.fill")
         let tabItem = UITabBarItem(title: "Контакты", image: image, selectedImage: selectedImage)
         
         controller.tabBarItem = tabItem
-        return controller
+        let navigationController = UINavigationController(rootViewController: controller)
+        navigationController.navigationBar.shadowImage = UIImage()
+        navigationController.navigationBar.barTintColor = .white
+        return navigationController
     }()
     
     private var cartVC: UINavigationController = {

@@ -11,14 +11,14 @@ enum LabelStyle: Int {
 
 class CreateLabel: UILabel {
     
-    init(style: LabelStyle, text: String) {
+    init(style: LabelStyle, text: String, alignment: NSTextAlignment ) {
         super.init(frame: .zero)
         
         switch style {
-        case .nameLabel: self.createNameLabel(text: text)
-        case .detailLabel: self.createDetailLabel(text: text)
-        case .largeDetail: self.createLargeDetail(text: text)
-        case .largeLabel: self.createLargeLabel(text: text)
+        case .nameLabel: self.createNameLabel(text: text, alignment: textAlignment)
+        case .detailLabel: self.createDetailLabel(text: text, alignment: textAlignment)
+        case .largeDetail: self.createLargeDetail(text: text, alignment: textAlignment)
+        case .largeLabel: self.createLargeLabel(text: text, alignment: textAlignment)
         }
     }
     
@@ -26,28 +26,27 @@ class CreateLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func createNameLabel(text: String) {
+    func createNameLabel(text: String, alignment: NSTextAlignment) {
         self.text = text
-        self.font = UIFont.boldSystemFont(ofSize: 15)
-    }
-    
-    func createDetailLabel(text: String) {
-        self.text = text
-        self.font = UIFont.systemFont(ofSize: 13)
-        self.textColor = .systemGray
-        self.textAlignment = .left
+        self.font = UIFont.boldSystemFont(ofSize: 16)
         self.numberOfLines = .max
     }
     
-    func createLargeDetail(text: String) {
+    func createDetailLabel(text: String, alignment: NSTextAlignment) {
         self.text = text
-        self.font = UIFont.systemFont(ofSize: 20)
-        self.textAlignment = .left
+        self.font = UIFont.systemFont(ofSize: 13)
+        self.textColor = .systemGray
+        self.numberOfLines = .max
     }
     
-    func createLargeLabel(text: String) {
+    func createLargeDetail(text: String, alignment: NSTextAlignment) {
         self.text = text
-        self.font = UIFont.boldSystemFont(ofSize: 17)
-        self.textAlignment = .left
+        self.font = UIFont.systemFont(ofSize: 15)
+        self.numberOfLines = .max
+    }
+    
+    func createLargeLabel(text: String, alignment: NSTextAlignment) {
+        self.text = text
+        self.font = UIFont.boldSystemFont(ofSize: 18)
     }
 }

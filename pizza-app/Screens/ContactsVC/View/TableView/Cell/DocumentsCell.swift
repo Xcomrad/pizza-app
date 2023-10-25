@@ -13,7 +13,7 @@ final class DocumentsCell: UITableViewCell {
     }()
     
     private var horizontalStack = CreateStack(style: .simpleHorizontalStack)
-    private var docLabel = CreateLabel(style: .largeDetail, text: "Правовые документы")
+    private var docLabel = CreateLabel(style: .largeDetail, text: "Правовые документы", alignment: .left)
     
     private var docButton: UIButton = {
        let button = UIButton()

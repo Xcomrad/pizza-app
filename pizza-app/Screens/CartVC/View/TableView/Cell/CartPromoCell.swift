@@ -17,16 +17,16 @@ final class CartPromoCell: UITableViewCell {
     private let promoButton = CreateButton(style: .largeButton, text: "Ввести промокод")
     
     private let upperHorizontalStack = CreateStack(style: .simpleHorizontalStack)
-    private let itemCount = CreateLabel(style: .nameLabel, text: "Вкусняшек на сумму")
-    private lazy var priceCount = CreateLabel(style: .nameLabel, text: "" )
+    private let itemCount = CreateLabel(style: .nameLabel, text: "Вкусняшек на сумму", alignment: .left)
+    private lazy var priceCount = CreateLabel(style: .nameLabel, text: "", alignment: .left )
     
     private let middleHorizontalStack = CreateStack(style: .simpleHorizontalStack)
-    private let coinLabel = CreateLabel(style: .nameLabel, text: "Начислим бонусов")
-    private lazy var coinCount = CreateLabel(style: .nameLabel, text: "" )
+    private let coinLabel = CreateLabel(style: .nameLabel, text: "Начислим бонусов", alignment: .left)
+    private lazy var coinCount = CreateLabel(style: .nameLabel, text: "", alignment: .left )
     
     private let lowerHorizontalStack = CreateStack(style: .simpleHorizontalStack)
-    private let deliverylabel = CreateLabel(style: .nameLabel, text: "Доставка")
-    private let finalDelivery = CreateLabel(style: .nameLabel, text: "Бесплатно")
+    private let deliverylabel = CreateLabel(style: .nameLabel, text: "Доставка", alignment: .left)
+    private let finalDelivery = CreateLabel(style: .nameLabel, text: "Бесплатно", alignment: .left)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -66,6 +66,7 @@ extension CartPromoCell {
         }
     }
     
+    // MARK: - Public
     func update(_ price: Int, _ coin: Int) {
         priceCount.text = "\(price) руб."
         coinCount.text = "+\(coin)"

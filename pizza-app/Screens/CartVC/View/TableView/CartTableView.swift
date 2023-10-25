@@ -7,10 +7,11 @@ private enum CartSection: Int, CaseIterable {
     case promo
 }
 
-final class TableView: UITableView {
+final class CartTableView: UITableView {
     
-    private let service = OrderService()
-    private let order = OrderService().order
+    private lazy var service = OrderService()
+    
+    var onProductIsChange: (()->())?
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: .zero, style: .plain)
@@ -34,7 +35,7 @@ final class TableView: UITableView {
 
 
 
-extension TableView: UITableViewDataSource, UITableViewDelegate {
+extension CartTableView: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return CartSection.allCases.count
@@ -48,6 +49,7 @@ extension TableView: UITableViewDataSource, UITableViewDelegate {
         case .product: return service.order.products.count
         case .promo: return 1
         default: return 0
+            
         }
     }
     
@@ -64,29 +66,33 @@ extension TableView: UITableViewDataSource, UITableViewDelegate {
             let cell = dequeueReusableCell(withIdentifier: CartProductCell.reuseId, for: indexPath) as! CartProductCell
             let product = service.order.products[indexPath.row]
             cell.update(product: product, index: indexPath.row)
-            
             cell.stepper.addTarget(self, action: #selector(productCountChanged(stepper:)), for: .valueChanged)
-            
             return cell
             
         case .promo:
             let cell = dequeueReusableCell(withIdentifier: CartPromoCell.reuseId, for: indexPath) as! CartPromoCell
             cell.update(service.order.totalPrice, service.order.totalCoin)
             return cell
-            
         default:
             return UITableViewCell()
             
         }
     }
     
+    // MARK: - Action
     @objc func productCountChanged(stepper: Stepper) {
+        // обновление Stepper
         service.order.products[stepper.index].count = stepper.countValue
-        self.reloadData()
         
         if stepper.countValue == 0 {
             service.order.products.remove(at: stepper.index)
-            self.reloadData()
         }
+        
+        if service.order.products.isEmpty {
+            self.onProductIsChange?()
+        }
+        
+        reloadData()
     }
 }
+

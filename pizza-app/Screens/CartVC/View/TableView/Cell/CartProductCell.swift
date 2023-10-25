@@ -47,9 +47,9 @@ final class CartProductCell: UITableViewCell {
         return imageView
     }()
     
-    private let nameLabel = CreateLabel(style: .largeLabel, text: "")
-    private let detailLabel = CreateLabel(style: .detailLabel, text: "")
-    private let priceLabel = CreateLabel(style: .largeLabel, text: "")
+    private let nameLabel = CreateLabel(style: .largeLabel, text: "", alignment: .left)
+    private let detailLabel = CreateLabel(style: .detailLabel, text: "", alignment: .left)
+    private let priceLabel = CreateLabel(style: .largeLabel, text: "", alignment: .left)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -87,6 +87,7 @@ extension CartProductCell {
         }
     }
     
+    // MARK: - Public
     func update(product: Product, index: Int) {
         productImageView.image = UIImage(named: product.image)
         nameLabel.text = "\(product.name)"
