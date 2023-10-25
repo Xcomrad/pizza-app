@@ -33,8 +33,8 @@ final class ProductCell: UITableViewCell {
         return imageView
     }()
     
-    private var nameLabel = CreateLabel(style: .nameLabel, text: "")
-    private var detailLabel = CreateLabel(style: .detailLabel, text: "")
+    private var nameLabel = CreateLabel(style: .nameLabel, text: "", alignment: .left)
+    private var detailLabel = CreateLabel(style: .detailLabel, text: "", alignment: .left)
     private var priceButton = CreateButton(style: .priceButton, text: "")
     
     private var bageLabel: UILabelPadding = {

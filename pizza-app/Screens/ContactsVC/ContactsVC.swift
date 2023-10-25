@@ -12,6 +12,11 @@ final class ContactsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
+    }
+    
+    private func setup() {
+        self.title = "Контакты"
     }
 }
 

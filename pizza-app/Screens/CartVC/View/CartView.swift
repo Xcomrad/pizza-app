@@ -1,42 +1,91 @@
 
 import UIKit
 
+//enum CartState {
+//    case loaded
+//    case noData
+//}
+
 final class CartView: UIView {
     
-   private let service = OrderService()
+    private var service = OrderService()
     
-    private let tableView = TableView()
-    private let buyView = BuyButtonView(frame: (CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 30)))
+    let emptyView = EmptyView()
+    let tableView = CartTableView()
+    private let buyButton = BuyButtonView()
+    
+    //    private var state: CartState {
+    //        didSet {
+    //            switch state {
+    //            case .loaded:
+    //                emptyView.isHidden = true
+    //               tableView.isHidden = false
+    //                buyButton.isHidden = false
+    //                tableView.reloadData()
+    //
+    //            case .noData:
+    //                emptyView.isHidden = false
+    //                tableView.isHidden = true
+    //                buyButton.isHidden = true
+    //            }
+    //        }
+    //    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
         setupViews()
         setupConstraints()
-        updateButton()
+        
+        tableView.onProductIsChange = {
+            self.swichState()
+            
+        }
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+
+
+extension CartView {
     
-   private func setupViews() {
-       self.addSubview(tableView)
-       self.addSubview(buyView)
+    private func setupViews() {
+        self.addSubview(emptyView)
+        self.addSubview(tableView)
+        self.addSubview(buyButton)
+        
     }
     
     private func setupConstraints() {
+        
+        emptyView.snp.makeConstraints { make in
+            make.edges.equalTo(self.safeAreaLayoutGuide)
+        }
+        
         tableView.snp.makeConstraints { make in
             make.top.left.right.equalTo(self.safeAreaLayoutGuide)
-            make.bottom.equalTo(buyView.snp.top)
+            make.bottom.equalTo(buyButton.snp.top)
         }
-        buyView.snp.makeConstraints { make in
+        
+        buyButton.snp.makeConstraints { make in
             make.left.right.equalTo(self)
             make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom)
         }
     }
     
-    private func updateButton() {
-        buyView.update(service.order.totalPrice)
+    func swichState() {
+        if service.order.products.isEmpty {
+            emptyView.isHidden = true
+            tableView.isHidden = false
+            buyButton.isHidden = false
+        } else {
+            emptyView.isHidden = false
+            tableView.isHidden = true
+            buyButton.isHidden = true
+        }
     }
 }
+

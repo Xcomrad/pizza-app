@@ -3,10 +3,9 @@ import UIKit
 
 final class DetailView: UIView {
     
-    private var products: [Product] = []
-    private var ingredient: [Ingredient] = []
-    
-    private var tableView = DetailTableView()
+    private let tableView = DetailTableView()
+    private let buyButton = DetailBuyButtonView()
+    let dismissButton = DismissButtonView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,10 +18,8 @@ final class DetailView: UIView {
     }
     
     //MARK: - Public
-    func update(_ product: [Product], _ ingredient: [Ingredient]) {
-        self.products = product
-        self.ingredient = ingredient
-        tableView.update(product, ingredient)
+    func update(_ product: [Product]) {
+        tableView.update(product)
     }
 }
 
@@ -32,12 +29,25 @@ extension DetailView {
     
     private func setupViews() {
         self.backgroundColor = .white
+        
         self.addSubview(tableView)
+        self.addSubview(buyButton)
+        self.addSubview(dismissButton)
     }
     
     private func setupConstraints() {
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(self.safeAreaLayoutGuide)
         }
+        
+        buyButton.snp.makeConstraints { make in
+            make.left.right.equalTo(self)
+            make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom)
+        }
+        
+        dismissButton.snp.makeConstraints { make in
+            make.top.right.equalTo(tableView).inset(20)
+        }
     }
 }
+

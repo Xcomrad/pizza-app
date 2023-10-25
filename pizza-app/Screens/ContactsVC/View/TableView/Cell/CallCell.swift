@@ -13,7 +13,7 @@ final class CallCell: UITableViewCell {
         return stack
     }()
     
-    private let callLabel = CreateLabel(style: .largeLabel, text: "Связаться с поддержкой")
+    private let callLabel = CreateLabel(style: .largeLabel, text: "Связаться с поддержкой", alignment: .center)
     private let callButton = CreateButton(style: .buyButton, text: "Позвонить")
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
