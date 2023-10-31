@@ -77,5 +77,4 @@ final class OrderService {
                 count: 1,
                 isNew: true)
     ])
-    
-}
+ }

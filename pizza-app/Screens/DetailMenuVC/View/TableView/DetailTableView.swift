@@ -8,7 +8,7 @@ private enum DetailSection: Int, CaseIterable {
 
  final class DetailTableView: UITableView {
      
-     private var product: [Product] = []
+     private var product: [ProductModel] = []
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: .zero, style: .plain)
@@ -29,7 +29,7 @@ private enum DetailSection: Int, CaseIterable {
     }
      
      // MARK: - Public
-     func update(_ product: [Product]) {
+     func update(_ product: [ProductModel]) {
          self.product = product
      }
 }

@@ -3,9 +3,6 @@ import UIKit
 
 final class MenuVC: UIViewController {
     
-    private let productService = ProductService()
-    private var product: [Product] = []
-    
     private var menuView: MenuView { return self.view as! MenuView }
     
     override func loadView() {
@@ -21,13 +18,14 @@ final class MenuVC: UIViewController {
     }
     
     func fetchProducts() {
-        product = productService.fetchProduct()
-        menuView.update(product)
+        let products = JSONLoader.loadProducts(fromFile: "menu") ?? []
+        menuView.update(products)
     }
     
     func action() {
-        menuView.tableView.onShowSelectedProduct = {
+        menuView.tableView.onShowSelectedProduct = { product in
             let controller = DetailVC()
+            controller.currentProduct = product
             self.present(controller, animated: true)
         }
     }

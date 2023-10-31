@@ -19,6 +19,9 @@
 		26308E9B2ACC76D100267B66 /* UIShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26308E9A2ACC76D100267B66 /* UIShadow.swift */; };
 		26429B142AE96F26001F02DB /* DetailBuyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26429B132AE96F26001F02DB /* DetailBuyButtonView.swift */; };
 		26429B162AE97228001F02DB /* DismissButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26429B152AE97228001F02DB /* DismissButtonView.swift */; };
+		264951C72AF1297400DB8CE6 /* JSONLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264951C62AF1297400DB8CE6 /* JSONLoader.swift */; };
+		264951C92AF129C600DB8CE6 /* ProductsArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264951C82AF129C600DB8CE6 /* ProductsArchiver.swift */; };
+		264951CB2AF13F7E00DB8CE6 /* menu.json in Resources */ = {isa = PBXBuildFile; fileRef = 264951CA2AF13F7E00DB8CE6 /* menu.json */; };
 		266D51512ACAD1B400CAF1AD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 266D51502ACAD1B400CAF1AD /* SnapKit */; };
 		266D51532ACAD1B400CAF1AD /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 266D51522ACAD1B400CAF1AD /* SnapKit-Dynamic */; };
 		266D51552ACAD24200CAF1AD /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266D51542ACAD24200CAF1AD /* ProductCell.swift */; };
@@ -77,6 +80,9 @@
 		26308E9A2ACC76D100267B66 /* UIShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIShadow.swift; sourceTree = "<group>"; };
 		26429B132AE96F26001F02DB /* DetailBuyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBuyButtonView.swift; sourceTree = "<group>"; };
 		26429B152AE97228001F02DB /* DismissButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissButtonView.swift; sourceTree = "<group>"; };
+		264951C62AF1297400DB8CE6 /* JSONLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONLoader.swift; sourceTree = "<group>"; };
+		264951C82AF129C600DB8CE6 /* ProductsArchiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsArchiver.swift; sourceTree = "<group>"; };
+		264951CA2AF13F7E00DB8CE6 /* menu.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = menu.json; sourceTree = "<group>"; };
 		266D51542ACAD24200CAF1AD /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		266D51582ACAD8C100CAF1AD /* ProductService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductService.swift; sourceTree = "<group>"; };
 		266D515A2ACAF4E600CAF1AD /* CategoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionView.swift; sourceTree = "<group>"; };
@@ -225,6 +231,8 @@
 				266D51602ACAF80500CAF1AD /* CategoryService.swift */,
 				26ADA5B12AD3F1AE00120E1C /* IngredientService.swift */,
 				26DB40752AD95F1B0078A246 /* OrderService.swift */,
+				264951C62AF1297400DB8CE6 /* JSONLoader.swift */,
+				264951C82AF129C600DB8CE6 /* ProductsArchiver.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -319,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				26998F5B2ACAC9DF00946CA5 /* App */,
+				26E728DF2ACEE9E0007FFDE6 /* MainTabBar */,
 				26998F5D2ACAC9F200946CA5 /* Screens */,
 				26F9A1BC2AD6BBF50079CCC5 /* Models */,
 				266D514C2ACAD03100CAF1AD /* Services */,
@@ -340,6 +349,7 @@
 		26998F5C2ACAC9EA00946CA5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				264951CA2AF13F7E00DB8CE6 /* menu.json */,
 				26998F4D2ACAC9CC00946CA5 /* Main.storyboard */,
 				26998F502ACAC9CE00946CA5 /* Assets.xcassets */,
 				26998F522ACAC9CE00946CA5 /* LaunchScreen.storyboard */,
@@ -351,7 +361,6 @@
 		26998F5D2ACAC9F200946CA5 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				26E728DF2ACEE9E0007FFDE6 /* MainTabBar */,
 				266D51462ACACF8C00CAF1AD /* MenuVC */,
 				266D514E2ACAD0C300CAF1AD /* DetailMenuVC */,
 				266D51472ACACF9A00CAF1AD /* ContactsVC */,
@@ -552,6 +561,7 @@
 			files = (
 				26998F542ACAC9CE00946CA5 /* LaunchScreen.storyboard in Resources */,
 				26998F512ACAC9CE00946CA5 /* Assets.xcassets in Resources */,
+				264951CB2AF13F7E00DB8CE6 /* menu.json in Resources */,
 				26998F4F2ACAC9CC00946CA5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -564,6 +574,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				260773D92AD82E61004E6E27 /* CartProductCell.swift in Sources */,
+				264951C92AF129C600DB8CE6 /* ProductsArchiver.swift in Sources */,
 				267B65F12AE2CE5300BD5211 /* BuyButtonView.swift in Sources */,
 				266D51632ACB026D00CAF1AD /* BannerService.swift in Sources */,
 				26F9A1CC2AD6DFE80079CCC5 /* DetailView.swift in Sources */,
@@ -589,6 +600,7 @@
 				26308E9B2ACC76D100267B66 /* UIShadow.swift in Sources */,
 				26E728E12ACEEA16007FFDE6 /* MainTabBarController.swift in Sources */,
 				26F9A1C42AD6BC860079CCC5 /* IngredientModel.swift in Sources */,
+				264951C72AF1297400DB8CE6 /* JSONLoader.swift in Sources */,
 				260773D72AD82D9C004E6E27 /* CartTableView.swift in Sources */,
 				260773E22AD83453004E6E27 /* EmptyView.swift in Sources */,
 				26429B162AE97228001F02DB /* DismissButtonView.swift in Sources */,

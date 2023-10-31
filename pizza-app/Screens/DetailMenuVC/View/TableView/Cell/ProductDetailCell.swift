@@ -69,7 +69,7 @@ extension ProductDetailCell {
     }
     
     // MARK: - Public
-    func update(_ product: Product) {
+    func update(_ product: ProductModel) {
         detailImageView.image = UIImage(named: "\(product.image)")
         namelabel.text = product.name
         detailLabel.text = product.detail

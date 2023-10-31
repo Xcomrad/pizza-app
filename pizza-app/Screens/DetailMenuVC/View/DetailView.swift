@@ -3,9 +3,9 @@ import UIKit
 
 final class DetailView: UIView {
     
-    private let tableView = DetailTableView()
-    private let buyButton = DetailBuyButtonView()
+    let tableView = DetailTableView()
     let dismissButton = DismissButtonView()
+    private let buyButton = DetailBuyButtonView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -15,11 +15,6 @@ final class DetailView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    //MARK: - Public
-    func update(_ product: [Product]) {
-        tableView.update(product)
     }
 }
 

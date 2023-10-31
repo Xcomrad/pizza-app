@@ -89,7 +89,7 @@ extension ProductCell {
 
 extension ProductCell {
     
-    func update(_ product: Product) {
+    func update(_ product: ProductModel) {
         productImageView.image = UIImage(named: "\(product.image)")
         nameLabel.text = product.name
         detailLabel.text = product.detail
