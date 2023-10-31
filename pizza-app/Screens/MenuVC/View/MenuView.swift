@@ -3,7 +3,7 @@ import UIKit
 
 final class MenuView: UIView {
     
-    private var products: [Product] = []
+    private var products: [ProductModel] = []
     
     var tableView = MenuTableView()
     
@@ -18,7 +18,7 @@ final class MenuView: UIView {
     }
     
     //MARK: - Public
-    func update(_ products: [Product]) {
+    func update(_ products: [ProductModel]) {
         self.products = products
         tableView.update(products)
     }

@@ -3,8 +3,7 @@ import UIKit
 
 final class DetailVC: UIViewController {
     
-    private var productService = ProductService()
-    private var product: [Product] = []
+    var currentProduct: ProductModel?
     
     private var detailView: DetailView { return self.view as! DetailView }
     
@@ -21,8 +20,9 @@ final class DetailVC: UIViewController {
     
     // MARK: - Public
     func fetchProducts() {
-        product = productService.fetchProduct()
-        detailView.update(product)
+        let products = JSONLoader.loadProducts(fromFile: "menu") ?? []
+        detailView.tableView.update(products)
+    
     }
     
     func dismissDetail() {

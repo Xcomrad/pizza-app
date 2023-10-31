@@ -7,9 +7,10 @@ private enum Section: Int, CaseIterable {
 
 final class MenuTableView: UITableView {
     
-    var onShowSelectedProduct: (()->())?
+    private var product: [ProductModel] = []
     
-    private var product: [Product] = []
+    var onShowSelectedProduct: ((ProductModel)->())?
+    var selectedProduct: ProductModel?
     
     private let headerTableView = HeaderTableView(frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 300))
     
@@ -32,7 +33,7 @@ final class MenuTableView: UITableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func update(_ product: [Product]) {
+    func update(_ product: [ProductModel]) {
         self.product = product
     }
 }
@@ -42,7 +43,7 @@ final class MenuTableView: UITableView {
 extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        onShowSelectedProduct?()
+        onShowSelectedProduct?(selectedProduct!)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
