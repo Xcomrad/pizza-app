@@ -4,7 +4,7 @@ import UIKit
 final class Stepper: UIControl {
     
     ///Устанавливается значение 
-    var countValue = 1 {
+    var countValue = 0 {
         didSet {
             countValue = countValue > 0 ? countValue : 0
             countLabel.text = "\(countValue)"

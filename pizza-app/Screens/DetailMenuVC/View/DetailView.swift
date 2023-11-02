@@ -5,7 +5,7 @@ final class DetailView: UIView {
     
     let tableView = DetailTableView()
     let dismissButton = DismissButtonView()
-    private let buyButton = DetailBuyButtonView()
+    let buyButton = DetailBuyButtonView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

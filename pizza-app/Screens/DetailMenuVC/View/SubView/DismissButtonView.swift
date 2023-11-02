@@ -24,16 +24,10 @@ class DismissButtonView: UIView {
         super.init(frame: frame)
         setupViews()
         setupConstraints()
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: - Action
-    @objc func closeScreen(sender: UIButton) {
-        self.onCloseDetail?()
     }
 }
 
@@ -49,6 +43,11 @@ extension DismissButtonView {
         button.snp.makeConstraints { make in
             make.edges.equalTo(self)
         }
+    }
+    
+    // MARK: - Action
+    @objc func closeScreen(sender: UIButton) {
+        self.onCloseDetail?()
     }
 }
 

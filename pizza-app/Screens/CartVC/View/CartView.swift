@@ -1,50 +1,33 @@
 
 import UIKit
 
-//enum CartState {
-//    case loaded
-//    case noData
-//}
-
 final class CartView: UIView {
     
-    private var service = OrderService()
+    private var order = Order(products: [])
     
     let emptyView = EmptyView()
     let tableView = CartTableView()
-    private let buyButton = BuyButtonView()
-    
-    //    private var state: CartState {
-    //        didSet {
-    //            switch state {
-    //            case .loaded:
-    //                emptyView.isHidden = true
-    //               tableView.isHidden = false
-    //                buyButton.isHidden = false
-    //                tableView.reloadData()
-    //
-    //            case .noData:
-    //                emptyView.isHidden = false
-    //                tableView.isHidden = true
-    //                buyButton.isHidden = true
-    //            }
-    //        }
-    //    }
+    private let buyButton = CartBuyButtonView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
         setupViews()
         setupConstraints()
-        
-        tableView.onProductIsChange = {
-            self.swichState()
-            
-        }
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: Public
+    func update(_ order: Order) {
+        self.order = order
+
+        tableView.update(order)
+        tableView.reloadData()
+
+        swichState()
     }
 }
 
@@ -76,15 +59,15 @@ extension CartView {
         }
     }
     
-    func swichState() {
-        if service.order.products.isEmpty {
-            emptyView.isHidden = true
-            tableView.isHidden = false
-            buyButton.isHidden = false
-        } else {
-            emptyView.isHidden = false
+   private func swichState() {
+        if order.products.isEmpty {
             tableView.isHidden = true
             buyButton.isHidden = true
+            emptyView.isHidden = false
+        } else {
+            tableView.isHidden = false
+            buyButton.isHidden = false
+            emptyView.isHidden = true
         }
     }
 }

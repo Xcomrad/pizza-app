@@ -5,6 +5,15 @@ final class ProductCell: UITableViewCell {
     
     static var reuseId = "ProductCell"
     
+    var onShowSelectedProduct: ((ProductModel)->())?
+    var selectedProduct: ProductModel?
+    
+    lazy var ghostButton: UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(showSelectedProduct(sender:)), for: .touchUpInside)
+        return button
+    }()
+    
     private var horizontalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -68,6 +77,7 @@ extension ProductCell {
     private func setupViews() {
         contentView.addSubview(horizontalStackView)
         contentView.addSubview(bageLabel)
+        contentView.addSubview(ghostButton)
         
         horizontalStackView.addArrangedSubview(productImageView)
         horizontalStackView.addArrangedSubview(verticalStackView)
@@ -75,12 +85,15 @@ extension ProductCell {
         verticalStackView.addArrangedSubview(nameLabel)
         verticalStackView.addArrangedSubview(detailLabel)
         verticalStackView.addArrangedSubview(priceButton)
- 
+        
     }
     
     private func setupConstraints() {
         horizontalStackView.snp.makeConstraints { make in
             make.edges.equalTo(contentView)
+        }
+        ghostButton.snp.makeConstraints { make in
+            make.edges.equalTo(horizontalStackView)
         }
     }
 }
@@ -89,7 +102,10 @@ extension ProductCell {
 
 extension ProductCell {
     
+    //MARK: - Public
     func update(_ product: ProductModel) {
+        self.selectedProduct = product
+        
         productImageView.image = UIImage(named: "\(product.image)")
         nameLabel.text = product.name
         detailLabel.text = product.detail
@@ -101,6 +117,11 @@ extension ProductCell {
                 make.top.equalTo(productImageView).offset(15)
             }
         }
+    }
+    
+    //MARK: - Action
+    @objc func showSelectedProduct(sender: UIButton) {
+        onShowSelectedProduct?(selectedProduct!)
     }
 }
 
