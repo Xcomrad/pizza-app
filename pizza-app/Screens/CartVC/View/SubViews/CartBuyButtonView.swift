@@ -1,7 +1,7 @@
 
 import UIKit
 
-final class BuyButtonView: UIView {
+final class CartBuyButtonView: UIView {
     
     private let buyButton = CreateButton(style: .buyButton, text: "Оформить заказ")
     
@@ -18,7 +18,7 @@ final class BuyButtonView: UIView {
 
 
 
-extension BuyButtonView {
+extension CartBuyButtonView {
     
     private func setupViews() {
         self.addSubview(buyButton)

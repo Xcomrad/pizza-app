@@ -88,13 +88,13 @@ extension CartProductCell {
     }
     
     // MARK: - Public
-    func update(product: Product, index: Int) {
+    func update(product: ProductModel, index: Int) {
         productImageView.image = UIImage(named: product.image)
         nameLabel.text = "\(product.name)"
-        detailLabel.text = "\(product.detail!)"
+        detailLabel.text = "\(product.detail)"
         priceLabel.text = "\(product.price) руб."
         
-        stepper.countValue = product.count
+        stepper.countValue = product.count ?? 0
         
         stepper.index = index
     }

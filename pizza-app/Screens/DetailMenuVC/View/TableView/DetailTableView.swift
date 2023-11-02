@@ -8,7 +8,7 @@ private enum DetailSection: Int, CaseIterable {
 
  final class DetailTableView: UITableView {
      
-     private var product: [ProductModel] = []
+     private var currentPoduct: ProductModel?
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: .zero, style: .plain)
@@ -21,7 +21,6 @@ private enum DetailSection: Int, CaseIterable {
         
         self.register(ProductDetailCell.self, forCellReuseIdentifier: ProductDetailCell.reuseId)
         self.register(DetailCollectionView.self, forCellReuseIdentifier: DetailCollectionView.reuseId)
-        
     }
     
     required init?(coder: NSCoder) {
@@ -29,8 +28,8 @@ private enum DetailSection: Int, CaseIterable {
     }
      
      // MARK: - Public
-     func update(_ product: [ProductModel]) {
-         self.product = product
+     func update(_ currentPoduct: ProductModel) {
+         self.currentPoduct = currentPoduct
      }
 }
 
@@ -60,8 +59,7 @@ extension DetailTableView: UITableViewDelegate, UITableViewDataSource {
         switch section {
         case .product:
             let cell = tableView.dequeueReusableCell(withIdentifier: ProductDetailCell.reuseId, for: indexPath) as! ProductDetailCell
-            let product = product[indexPath.row]
-            cell.update(product)
+            cell.update(currentPoduct!)
             return cell
             
         case .ingredient:

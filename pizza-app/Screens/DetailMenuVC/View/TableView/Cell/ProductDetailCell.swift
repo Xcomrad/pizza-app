@@ -5,9 +5,9 @@ final class ProductDetailCell: UITableViewCell {
     
     static var reuseId = "ProductDetailCell"
     
-    private var imageArray:[UIImage?] = [UIImage(named: "big"),
-                                         UIImage(named: "middle"),
-                                         UIImage(named: "small")]
+    private var imageArray:[UIImage?] = [UIImage(named: "1"),
+                                         UIImage(named: "2"),
+                                         UIImage(named: "3")]
     
     private var container: UIStackView = {
         let stack = UIStackView()
@@ -18,7 +18,6 @@ final class ProductDetailCell: UITableViewCell {
     
     private var detailImageView: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "middle")
         image.contentMode = .scaleAspectFit
         image.heightAnchor.constraint(equalToConstant: 250).isActive = true
         image.widthAnchor.constraint(equalToConstant: 250).isActive = true

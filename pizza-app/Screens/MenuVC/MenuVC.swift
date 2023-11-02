@@ -2,6 +2,9 @@
 import UIKit
 
 final class MenuVC: UIViewController {
+     
+    var selectProduct: ProductModel?
+    private let jsonLoader = JSONLoader()
     
     private var menuView: MenuView { return self.view as! MenuView }
     
@@ -17,13 +20,14 @@ final class MenuVC: UIViewController {
         setup()
     }
     
+    //MARK: - Public
     func fetchProducts() {
-        let products = JSONLoader.loadProducts(fromFile: "menu") ?? []
-        menuView.update(products)
+        let products = jsonLoader.loadProducts(fromFile: "menu") ?? []
+        menuView.tableView.update(products)
     }
     
     func action() {
-        menuView.tableView.onShowSelectedProduct = { product in
+        menuView.tableView.onCellEvent = { product in
             let controller = DetailVC()
             controller.currentProduct = product
             self.present(controller, animated: true)

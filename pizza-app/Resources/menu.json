@@ -1,6 +1,6 @@
 {
     "products":
-    [
+[
         {
             "index": 101,
             "coin": 20,
@@ -33,6 +33,7 @@
             "count": 1,
             "isNew": false
         },
+        
         {
             "index": 104,
             "coin": 20,

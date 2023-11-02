@@ -2,20 +2,20 @@
 import Foundation
 
 
-protocol ProductsArchiverInput {
-    func save(_ products: [Product])
-    func retrieve() -> [Product]
+protocol ProductsArchiver {
+    func save(_ products: [ProductModel])
+    func retrieve() -> [ProductModel]
 }
 
-final class ProductsArchiver: ProductsArchiverInput {
+final class ProductsArchiverImpl: ProductsArchiver {
 
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
 
     private let key = "Products"
 
-    //MARK: - Public methods
-    func save(_ products: [Product]) {
+    //MARK: - Public
+    func save(_ products: [ProductModel]) {
 
         do {
             let data = try encoder.encode(products)
@@ -25,11 +25,11 @@ final class ProductsArchiver: ProductsArchiverInput {
         }
     }
    
-    func retrieve() -> [Product] {
+    func retrieve() -> [ProductModel] {
 
         guard let data = UserDefaults.standard.data(forKey: key) else { return [] }
         do {
-            let array = try decoder.decode(Array<Product>.self, from: data)
+            let array = try decoder.decode(Array<ProductModel>.self, from: data)
             return array
         } catch {
             print(error)

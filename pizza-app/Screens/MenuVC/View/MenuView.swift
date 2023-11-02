@@ -3,8 +3,6 @@ import UIKit
 
 final class MenuView: UIView {
     
-    private var products: [ProductModel] = []
-    
     var tableView = MenuTableView()
     
     override init(frame: CGRect) {
@@ -15,12 +13,6 @@ final class MenuView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    //MARK: - Public
-    func update(_ products: [ProductModel]) {
-        self.products = products
-        tableView.update(products)
     }
 }
 

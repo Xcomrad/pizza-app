@@ -3,7 +3,13 @@ import UIKit
 
 final class DetailBuyButtonView: UIView {
     
-    private let buyButton = CreateButton(style: .buyButton, text: "В корзину")
+    var onAddProductInCart: (()->())?
+    
+    private lazy var buyButton: UIButton = {
+        let button = CreateButton(style: .buyButton, text: "В корзину")
+        button.addTarget(self, action: #selector(addProductInCart(sender:)), for: .touchUpInside)
+        return button
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,5 +35,10 @@ extension DetailBuyButtonView {
         buyButton.snp.makeConstraints { make in
             make.edges.equalTo(self).inset(20)
         }
+    }
+    
+    //MARK: - Action
+    @objc func addProductInCart(sender: UIButton) {
+        onAddProductInCart?()
     }
 }
