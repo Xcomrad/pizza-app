@@ -2,9 +2,10 @@
 import UIKit
 
 final class MenuVC: UIViewController {
-     
-    var selectProduct: ProductModel?
-    private let jsonLoader = JSONLoader()
+    
+    var selectProduct: ProductResponse?
+    private let service = ProductsAPI()
+    private var products: [Product] = []
     
     private var menuView: MenuView { return self.view as! MenuView }
     
@@ -12,7 +13,7 @@ final class MenuVC: UIViewController {
         super.loadView()
         self.view = MenuView.init(frame: UIScreen.main.bounds)
     }
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchProducts()
@@ -22,8 +23,14 @@ final class MenuVC: UIViewController {
     
     //MARK: - Public
     func fetchProducts() {
-        let products = jsonLoader.loadProducts(fromFile: "menu") ?? []
-        menuView.tableView.update(products)
+        Task {
+            do {
+                let products = try await service.fetchProductsAsync()
+                menuView.tableView.update(products)
+            } catch {
+                print(error)
+            }
+        }
     }
     
     func action() {

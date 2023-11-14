@@ -60,7 +60,7 @@ extension CartView {
     }
     
    private func swichState() {
-        if order.products.isEmpty {
+       if order.totalPrice == 0 {
             tableView.isHidden = true
             buyButton.isHidden = true
             emptyView.isHidden = false

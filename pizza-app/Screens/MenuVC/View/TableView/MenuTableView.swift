@@ -7,8 +7,8 @@ private enum Section: Int, CaseIterable {
 
 final class MenuTableView: UITableView {
 
-    var onCellEvent: ((ProductModel)->())?
-    private var product: [ProductModel] = []
+    var onCellEvent: ((Product)->())?
+    private var product: [Product] = []
     
     private let headerTableView = HeaderTableView(frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 300))
     
@@ -32,8 +32,9 @@ final class MenuTableView: UITableView {
     }
     
     //MARK: - Public
-    func update(_ product: [ProductModel]) {
+    func update(_ product: [Product]) {
         self.product = product
+        self.reloadData()
     }
 }
 

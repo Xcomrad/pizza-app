@@ -1,12 +1,12 @@
 
 import Foundation
 
-struct MenuModel: Codable {
-    let products: [ProductModel]
+struct ProductResponse: Codable {
+    let products: [Product]
 }
 
 // Networking model
-class ProductModel: Codable {
+class Product: Codable {
     
     var index: Int
     var coin: Int
@@ -18,4 +18,5 @@ class ProductModel: Codable {
     var count: Int?
     var isNew: Bool?
 }
+
 

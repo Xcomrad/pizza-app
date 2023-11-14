@@ -5,7 +5,7 @@ import Foundation
 
 final class Order {
     
-    var products: [ProductModel]
+    var products: [Product]
     
     var totalPrice: Int {
         return products.reduce(0) { acc, curr in
@@ -27,7 +27,7 @@ final class Order {
         return result
     }
     
-    internal init(products: [ProductModel]) {
+    internal init(products: [Product]) {
         self.products = products
     }
 }

@@ -3,7 +3,7 @@ import UIKit
 
 final class DetailVC: UIViewController {
     
-    var currentProduct: ProductModel?
+    var currentProduct: Product?
     var productArchiver = ProductsArchiverImpl()
     
     private var detailView: DetailView { return self.view as! DetailView }
