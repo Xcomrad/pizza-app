@@ -5,8 +5,8 @@ final class ProductCell: UITableViewCell {
     
     static var reuseId = "ProductCell"
     
-    var onShowSelectedProduct: ((ProductModel)->())?
-    var selectedProduct: ProductModel?
+    var onShowSelectedProduct: ((Product)->())?
+    var selectedProduct: Product?
     
     lazy var ghostButton: UIButton = {
         let button = UIButton()
@@ -103,7 +103,7 @@ extension ProductCell {
 extension ProductCell {
     
     //MARK: - Public
-    func update(_ product: ProductModel) {
+    func update(_ product: Product) {
         self.selectedProduct = product
         
         productImageView.image = UIImage(named: "\(product.image)")

@@ -3,8 +3,8 @@ import Foundation
 
 
 protocol ProductsArchiver {
-    func save(_ products: [ProductModel])
-    func retrieve() -> [ProductModel]
+    func save(_ products: [Product])
+    func retrieve() -> [Product]
 }
 
 final class ProductsArchiverImpl: ProductsArchiver {
@@ -15,7 +15,7 @@ final class ProductsArchiverImpl: ProductsArchiver {
     private let key = "Products"
 
     //MARK: - Public
-    func save(_ products: [ProductModel]) {
+    func save(_ products: [Product]) {
 
         do {
             let data = try encoder.encode(products)
@@ -25,11 +25,11 @@ final class ProductsArchiverImpl: ProductsArchiver {
         }
     }
    
-    func retrieve() -> [ProductModel] {
+    func retrieve() -> [Product] {
 
         guard let data = UserDefaults.standard.data(forKey: key) else { return [] }
         do {
-            let array = try decoder.decode(Array<ProductModel>.self, from: data)
+            let array = try decoder.decode(Array<Product>.self, from: data)
             return array
         } catch {
             print(error)

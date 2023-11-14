@@ -88,7 +88,7 @@ extension CartProductCell {
     }
     
     // MARK: - Public
-    func update(product: ProductModel, index: Int) {
+    func update(product: Product, index: Int) {
         productImageView.image = UIImage(named: product.image)
         nameLabel.text = "\(product.name)"
         detailLabel.text = "\(product.detail)"
