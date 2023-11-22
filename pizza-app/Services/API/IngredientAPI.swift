@@ -1,7 +1,7 @@
 
 import Foundation
 
-struct IngredientService {
+struct IngredientAPI {
     let ingredient: [Ingredient] = [
         Ingredient(image: "001", name: "Моцарелла", price: 3),
         Ingredient(image: "002", name: "Чеддер и пармезан", price: 3),

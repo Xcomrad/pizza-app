@@ -1,14 +1,13 @@
 
 import Foundation
 
-
-protocol ProductsArchiver {
+protocol CartArchiver {
     func save(_ products: [Product])
     func retrieve() -> [Product]
 }
 
-final class ProductsArchiverImpl: ProductsArchiver {
-
+class CartArchiverImpl: CartArchiver {
+    
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
 

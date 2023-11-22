@@ -5,7 +5,7 @@ final class CategoryCollectionView: UITableViewCell {
     
     static var reuseId = "CategoryCollectionView"
     
-    private let categoryService = CategoryService()
+    private let categoryService = CategoryAPI()
     private var category: [Category] = []
     
     private var containerView: UIView = {

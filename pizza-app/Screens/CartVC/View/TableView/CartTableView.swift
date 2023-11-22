@@ -9,7 +9,7 @@ private enum CartSection: Int, CaseIterable {
 
 final class CartTableView: UITableView {
     
-    var productArchiver = ProductsArchiverImpl()
+    var productArchiver = CartArchiverImpl()
     lazy var order = Order(products: [])
     
     var onProductIsEmpty: (()->())?

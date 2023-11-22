@@ -3,11 +3,9 @@ import UIKit
 
 final class MenuVC: UIViewController {
     
-    var selectProduct: ProductResponse?
-    private let service = ProductsAPI()
-    private var products: [Product] = []
-    
     private var menuView: MenuView { return self.view as! MenuView }
+    
+    private let menuApiClient = MenuApiClientImpl()
     
     override func loadView() {
         super.loadView()
@@ -25,7 +23,7 @@ final class MenuVC: UIViewController {
     func fetchProducts() {
         Task {
             do {
-                let products = try await service.fetchProductsAsync()
+                let products = try await menuApiClient.fetchProductsAsync()
                 menuView.tableView.update(products)
             } catch {
                 print(error)
@@ -35,7 +33,7 @@ final class MenuVC: UIViewController {
     
     func action() {
         menuView.tableView.onCellEvent = { product in
-            let controller = DetailVC()
+            let controller = Di.shared.screenFactory.createDetailScreen(product)
             controller.currentProduct = product
             self.present(controller, animated: true)
         }
