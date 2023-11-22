@@ -5,7 +5,7 @@ final class BannerCollectionView: UITableViewCell {
     
     var reuseId = "BannerCollectionView"
     
-    private let bannerService = BannerService()
+    private let bannerService = BannerAPI()
     private var banner: [Banner] = []
     
     private var containerStack: UIStackView = {

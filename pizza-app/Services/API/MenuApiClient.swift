@@ -8,8 +8,12 @@ enum NetworkError: Error {
     case dataError
 }
 
-class ProductsAPI {
-    
+protocol MenuApiClient {
+    func fetchProductsAsync() async throws -> [Product]
+}
+
+class MenuApiClientImpl: MenuApiClient {
+
     func fetchProductsAsync() async throws -> [Product] {
         
         var urlComponents = URLComponents()

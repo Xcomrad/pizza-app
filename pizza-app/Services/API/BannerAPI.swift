@@ -1,7 +1,7 @@
 
 import Foundation
 
-struct BannerService {
+struct BannerAPI {
     let banner: [Banner] = [
         Banner(image: "01"),
         Banner(image: "02"),

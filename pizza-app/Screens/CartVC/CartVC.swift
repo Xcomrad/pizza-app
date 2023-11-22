@@ -3,11 +3,23 @@ import UIKit
 
 final class CartVC: UIViewController {
     
-    var productArchiver = ProductsArchiverImpl()
-    var order = Order(products: [])
-        
     private var cartView: CartView { return self.view as! CartView }
     
+    var order = Order(products: [])
+    
+    var cartProvider: CartProvider
+    
+    init(cartProvider: CartProvider) {
+        self.cartProvider = cartProvider
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+   
+        
     override func loadView() {
         super.loadView()
         self.view = CartView(frame: UIScreen.main.bounds)
@@ -16,7 +28,7 @@ final class CartVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        order = Order(products: productArchiver.retrieve())
+        order = Order(products: cartProvider.retrieveOrder())
         update()
     }
     
@@ -39,7 +51,6 @@ extension CartVC {
         // переход в Menu
         cartView.emptyView.onEnterMenuVC = {
             self.tabBarController?.selectedIndex = 0
-            
         }
     }
     

@@ -2,10 +2,10 @@
 import UIKit
 import SnapKit
 
-final class MainTabBarController: UITabBarController {
+ class MainTabBarController: UITabBarController {
     
-    private var menuVC: UINavigationController = {
-        let controller = MenuVC()
+    private lazy var menuVC: UINavigationController = {
+        let controller = Di.shared.screenFactory.createMenuScreen()
         let image = UIImage(systemName: "menucard")
         let selectedImage = UIImage(systemName: "menucard.fill")
         let tabItem = UITabBarItem(title: "Меню", image: image, selectedImage: selectedImage)
@@ -18,7 +18,7 @@ final class MainTabBarController: UITabBarController {
     }()
     
     private var contactsVC: UINavigationController = {
-        let controller = ContactsVC()
+        let controller = Di.shared.screenFactory.createContactsScreen()
         let image = UIImage(systemName: "phone")
         let selectedImage = UIImage(systemName: "phone.fill")
         let tabItem = UITabBarItem(title: "Контакты", image: image, selectedImage: selectedImage)
@@ -31,7 +31,7 @@ final class MainTabBarController: UITabBarController {
     }()
     
     private var cartVC: UINavigationController = {
-        let controller = CartVC()
+        let controller = Di.shared.screenFactory.createCartScreen()
         let image = UIImage(systemName: "cart")
         let selectedImage = UIImage(systemName: "cart.fill")
         let tabItem = UITabBarItem(title: "Корзина", image: image, selectedImage: selectedImage)

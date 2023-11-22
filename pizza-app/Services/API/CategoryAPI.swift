@@ -1,7 +1,7 @@
 
 import Foundation
 
-struct CategoryService {
+struct CategoryAPI {
     let category: [Category] = [
         Category(name: "Пицца"),
         Category(name: "Закуски"),

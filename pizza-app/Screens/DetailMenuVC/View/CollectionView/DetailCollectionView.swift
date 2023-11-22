@@ -5,7 +5,7 @@ final class DetailCollectionView: UITableViewCell {
     
     static var reuseId = "DetailCollectionView"
     
-    private var service = IngredientService()
+    private var service = IngredientAPI()
     private var ingredient: [Ingredient] = []
     
     private var containerStack: UIStackView = {

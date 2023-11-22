@@ -4,7 +4,20 @@ import UIKit
 final class DetailVC: UIViewController {
     
     var currentProduct: Product?
-    var productArchiver = ProductsArchiverImpl()
+    var cartArchiver = CartArchiverImpl()
+    
+    var detailProvider: DetailProvider
+    
+    init(currentProduct: Product? = nil, cartArchiver: CartArchiverImpl, detailProvider: DetailProvider) {
+        self.currentProduct = currentProduct
+        self.cartArchiver = cartArchiver
+        self.detailProvider = detailProvider
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private var detailView: DetailView { return self.view as! DetailView }
     
@@ -17,7 +30,6 @@ final class DetailVC: UIViewController {
         super.viewDidLoad()
         update()
         dismissDetailScreen()
-        
     }
 }
 
@@ -43,11 +55,11 @@ extension DetailVC {
     
     func updateProductsInCart() {
         
-        var productsInCart = productArchiver.retrieve()
+        var productsInCart = cartArchiver.retrieve()
         let isRepeatProduct = productsInCart.contains { $0.index == currentProduct?.index }
         
         defer {
-            productArchiver.save(productsInCart)
+            cartArchiver.save(productsInCart)
         }
         
         if productsInCart.isEmpty || !isRepeatProduct {
