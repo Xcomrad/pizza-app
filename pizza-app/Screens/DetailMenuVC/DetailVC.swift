@@ -6,7 +6,7 @@ final class DetailVC: UIViewController {
     var currentProduct: Product?
     var cartArchiver = CartArchiverImpl()
     
-    var detailProvider: DetailProvider
+    private let detailProvider: DetailProvider
     
     init(currentProduct: Product? = nil, cartArchiver: CartArchiverImpl, detailProvider: DetailProvider) {
         self.currentProduct = currentProduct
@@ -43,7 +43,7 @@ extension DetailVC {
     }
     
     //MARK: - Action
-    func dismissDetailScreen() {
+    private func dismissDetailScreen() {
         detailView.dismissButton.onCloseDetail = {
             self.dismiss(animated: true, completion: nil)
         }
