@@ -7,7 +7,7 @@ final class CartVC: UIViewController {
     
     var order = Order(products: [])
     
-    var cartProvider: CartProvider
+    private let cartProvider: CartProvider
     
     init(cartProvider: CartProvider) {
         self.cartProvider = cartProvider
@@ -18,8 +18,6 @@ final class CartVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-   
-        
     override func loadView() {
         super.loadView()
         self.view = CartView(frame: UIScreen.main.bounds)

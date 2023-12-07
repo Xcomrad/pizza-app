@@ -19,7 +19,7 @@ class ScreenFactoryImpl: ScreenFactory {
     }
     
     func createMenuScreen() -> MenuVC {
-        return MenuVC()
+        return MenuVC(menuProvider: di.menuProvider)
     }
     
     func createDetailScreen(_ currentProduct: Product?) -> DetailVC {
@@ -44,17 +44,19 @@ class Di {
     let menuApiClient: MenuApiClientImpl
     let cartArchiver: CartArchiverImpl
     let screenFactory: ScreenFactoryImpl
+    let router: RouterImpl
     
     init() {
         menuApiClient = MenuApiClientImpl()
         cartArchiver = CartArchiverImpl()
+        router = RouterImpl()
         
         screenFactory = ScreenFactoryImpl()
         screenFactory.di = self
     }
     
     var menuProvider: MenuProvider {
-        return MenuProviderImpl(menuApiClient: menuApiClient)
+        return MenuProviderImpl(menuApiClient: menuApiClient, router: router)
     }
     var detaiProvider: DetailProvider {
         return DetailProviderImpl(cartArchiver: cartArchiver)
